@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eXcelerate Learning — Bespoke e-learning that actually works</title>
+<meta name="description" content="We co-create, design, build and deploy SCORM courses, set up LMS platforms, and shape L&D strategy. For universities and corporate teams who need more than off-the-shelf.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══════════════════════ SHARED NAV ═══════════════════════ -->
+<nav class="nav" id="site-nav">
+  <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('site-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-logo" href="index.html">
+    <!-- ✏️ EDIT: logo src — swap to your GitHub raw URL once pushed, or keep the relative path -->
+    <img src="assets/logos/excelerate-mark.png" alt="eXcelerate Learning" onerror="this.style.display='none'">
+    <!-- ✏️ EDIT: Company name in nav -->
+    <span class="nav-logo-text">e<span>X</span>celerate Learning</span>
+  </a>
+
+  <div class="nav-menu">
+    <a class="nav-link he" href="higher-education.html">Higher Education</a>
+    <a class="nav-link corp" href="corporate.html">Corporate</a>
+    <a class="nav-link" href="index.html#services" data-scrollspy="services">Services</a>
+    <a class="nav-link" href="index.html#our-work" data-scrollspy="our-work">Our Work</a>
+    <a class="nav-link" href="about.html">About</a>
+    <div class="nav-spacer"></div>
+    <a class="nav-li" href="https://www.linkedin.com/company/105195682" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      Follow on LinkedIn
+    </a>
+    <!-- ✏️ EDIT: Nav CTA button text / destination -->
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════ PAGE: HOME ═══════════════════════ -->
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow pink"></div>
+  <div class="hero-glow blue"></div>
+  <div class="hero-content">
+    <div style="display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center;">
+      <div>
+        <!-- ✏️ EDIT: Eyebrow label above headline -->
+        <div class="eyebrow">Bespoke solutions, remarkable results</div>
+        <!-- ✏️ EDIT: Main homepage headline -->
+        <h1 class="hero-h1">Bespoke <br> e-learning<br>that <span class="grad">actually works.</span></h1>
+        <!-- ✏️ EDIT: Homepage hero subtext paragraph -->
+        <p class="hero-sub">We co-create, design, build and deploy SCORM courses, set up LMS platforms, and shape L&amp;D strategy. For universities and corporate teams who need more than off-the-shelf.</p>
+        <div class="audience-cards">
+          <a class="aud-card he" href="higher-education.html">
+            <div class="aud-label">Higher Education</div>
+            <div class="aud-title">Academic CPD and Toolkits</div>
+            <div class="aud-desc">Professional development, interactive toolkits and SCORM courseware for HE institutions.</div>
+            <div class="aud-arrow">Explore →</div>
+          </a>
+          <a class="aud-card corp" href="corporate.html">
+            <div class="aud-label">Corporate and SME</div>
+            <div class="aud-title">L&amp;D that drives real results</div>
+            <div class="aud-desc">Bespoke training courses, L&amp;D strategy and LMS setup for teams who want training that lands.</div>
+            <div class="aud-arrow">Explore →</div>
+          </a>
+        </div>
+      </div>
+      <!-- ============================================================ -->
+      <!-- ✏️ VIDEO PLACEHOLDER: Homepage Hero                          -->
+      <!-- Replace this block with your video embed, e.g.:               -->
+      <!--   <video autoplay muted loop playsinline                      -->
+      <!--     style="border-radius:16px;width:100%;">                   -->
+      <!--     <source src="YOUR-VIDEO.mp4" type="video/mp4">             -->
+      <!--   </video>                                                    -->
+      <!-- ============================================================ -->
+      <div class="video-ph">
+        <div class="vp-play">▶</div>
+        <div class="vp-tag">Avatar video — Homepage hero</div>
+        <div class="vp-title">Welcome to eXcelerate Learning</div>
+        <div class="vp-script">"We build e-learning that actually moves people. Whatever your audience, we design from scratch, around your learners."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- WHAT WE DO — Services (anchor target: #services)              -->
+<!-- ============================================================ -->
+<div class="divider-grad"></div>
+<div class="section" id="services">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Our services</div>
+    <h2 class="sec-h2">What we do</h2>
+    <p class="sec-sub">We offer a focused set of services. Each one designed to make your learning programme more effective and easier to run.</p>
+  </div>
+  <div class="grid-3">
+    <div class="card c-pink">
+      <div class="card-icon pink">✏</div>
+      <div class="card-title">Instructional Design and Course Creation</div>
+      <div class="card-body">SCORM-compliant courses built in Storyline, Rise and more. Storyboarding, existing course reviews, and full custom content creation from scratch.</div>
+    </div>
+    <div class="card c-blue">
+      <div class="card-icon blue">◎</div>
+      <div class="card-title">L&amp;D Strategy</div>
+      <div class="card-body">Needs analysis, stakeholder engagement, scoping sessions and action planning. For organisations who need a proper plan before they build anything.</div>
+    </div>
+    <div class="card c-green">
+      <div class="card-icon green">⚡</div>
+      <div class="card-title">LMS Setup and Management</div>
+      <div class="card-body">Platform sourcing, Learnworlds setup, integration and ongoing management. We stay involved after launch, not just during the build.</div>
+    </div>
+  </div>
+  <div style="margin-top:20px;">
+    <div class="card c-yellow" style="display:flex;align-items:center;gap:24px;padding:24px 32px;">
+      <div class="card-icon yellow" style="flex-shrink:0;margin-bottom:0;">▶</div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);margin-bottom:6px;">New service</div>
+        <div class="card-title" style="margin-bottom:6px;">AI Avatar Video Production</div>
+        <div class="card-body">We produce professional AI avatar videos for course content and LMS platforms. Scripted, narrated, branded. It's how we build our own site content and it's a powerful addition to any e-learning project.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FEATURED WORK — Our Work (anchor target: #our-work)           -->
+<!-- ============================================================ -->
+<div class="divider-grad"></div>
+<div class="section" id="our-work">
+  <div class="sec-header">
+    <div class="sec-eyebrow">Our work</div>
+    <h2 class="sec-h2">What we've built</h2>
+    <p class="sec-sub">Over 60 clients across Higher Education, corporate and the third sector. Here's a selection.</p>
+  </div>
+  <!-- ============================================================ -->
+  <!-- ✏️ MEDIA IN CASE CARDS                                        -->
+  <!-- Each .case-img supports an image OR video:                    -->
+  <!--   <img src="assets/projects/X.jpg" alt="...">                 -->
+  <!--   <video autoplay muted loop playsinline>                     -->
+  <!--     <source src="assets/projects/X.mp4" type="video/mp4">     -->
+  <!--   </video>                                                    -->
+  <!-- Add class="has-media" to .case-img when media is present      -->
+  <!-- to overlay a subtle darken gradient.                          -->
+  <!-- ============================================================ -->
+  <div class="work-grid" id="work-grid-home">
+
+    <!-- CARD 1 — HE toolkit -->
+    <div class="case-card">
+      <div class="case-img case-img-he">
+        <!-- ✏️ EDIT: drop <img> or <video> here and add has-media to .case-img -->
+        <span style="font-size:48px;opacity:0.4;">🎓</span>
+        <div class="case-tag he">Higher Education</div>
+        <div class="case-share">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-outcome">Academic staff development</div>
+        <div class="case-title">Interactive HE Toolkit for Academics</div>
+        <div class="case-desc">An interactive staff development toolkit built in Articulate Storyline for a Higher Education institution. Designed to support academics in developing their digital teaching practice.</div>
+        <div class="case-tools">
+          <span class="case-tool">Articulate Storyline</span>
+          <span class="case-tool">SCORM</span>
+          <span class="case-tool">HE institution</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2 — LMS + AI avatar -->
+    <div class="case-card">
+      <div class="case-img case-img-corp">
+        <!-- ✏️ EDIT: drop <img> or <video> here and add has-media to .case-img -->
+        <span style="font-size:48px;opacity:0.4;">🏢</span>
+        <div class="case-tag corp">Corporate</div>
+        <div class="case-share">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-outcome">LMS launch and course build</div>
+        <div class="case-title">LMS Platform and AI Avatar Course</div>
+        <div class="case-desc">Built a full Learnworlds LMS site and video playlist course with AI avatars, interactive quizzes and certification on completion. Team onboarded and delivering within weeks.</div>
+        <div class="case-tools">
+          <span class="case-tool">Learnworlds</span>
+          <span class="case-tool">AI Avatar</span>
+          <span class="case-tool">Certification</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3 — PGCert (teaser state — visible but faded until expanded) -->
+    <!-- ✏️ EDIT: Replace project content -->
+    <div class="case-card" data-reveal="teaser">
+      <div class="case-img case-img-he">
+        <!-- ✏️ EDIT: drop <img> or <video> here and add has-media to .case-img -->
+        <span style="font-size:48px;opacity:0.4;">📚</span>
+        <div class="case-tag he">Higher Education</div>
+        <div class="case-share">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-outcome">PGCert programme conversion</div>
+        <div class="case-title">Online PGCert in Academic Practice</div>
+        <div class="case-desc">Converted a face-to-face PGCert into a blended online programme with self-paced SCORM modules and live cohort sessions. Rolled out across three UK universities.</div>
+        <div class="case-tools">
+          <span class="case-tool">Rise 360</span>
+          <span class="case-tool">SCORM</span>
+          <span class="case-tool">Blended learning</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4 — FCA compliance (teaser state) -->
+    <!-- ✏️ EDIT: Replace project content -->
+    <div class="case-card" data-reveal="teaser">
+      <div class="case-img case-img-corp">
+        <!-- ✏️ EDIT: drop <img> or <video> here and add has-media to .case-img -->
+        <span style="font-size:48px;opacity:0.4;">🛡️</span>
+        <div class="case-tag corp">Corporate</div>
+        <div class="case-share">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-outcome">Compliance transformation</div>
+        <div class="case-title">FCA Compliance Learning Pathway</div>
+        <div class="case-desc">A bespoke FCA-aligned compliance pathway for a London fintech. Six micro-modules, adaptive assessments and manager dashboards surfacing real-time completion data.</div>
+        <div class="case-tools">
+          <span class="case-tool">Articulate Storyline</span>
+          <span class="case-tool">Adaptive assessment</span>
+          <span class="case-tool">FCA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 5 — International induction (hidden until expanded) -->
+    <!-- ✏️ EDIT: Replace project content -->
+    <div class="case-card" data-reveal="hidden">
+      <div class="case-img case-img-he">
+        <!-- ✏️ EDIT: drop <img> or <video> here and add has-media to .case-img -->
+        <span style="font-size:48px;opacity:0.4;">🌍</span>
+        <div class="case-tag he">Higher Education</div>
+        <div class="case-share">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-outcome">Student-facing induction</div>
+        <div class="case-title">Digital Induction for International Students</div>
+        <div class="case-desc">A multilingual digital induction built for a Russell Group university. Covers arrival logistics, academic expectations and wellbeing. Cut first-week support queries by 38%.</div>
+        <div class="case-tools">
+          <span class="case-tool">Articulate Rise</span>
+          <span class="case-tool">Multilingual</span>
+          <span class="case-tool">International HE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 6 — Maritime onboarding (hidden until expanded) -->
+    <!-- ✏️ EDIT: Replace project content -->
+    <div class="case-card" data-reveal="hidden">
+      <div class="case-img case-img-corp">
+        <!-- ✏️ EDIT: drop <img> or <video> here and add has-media to .case-img -->
+        <span style="font-size:48px;opacity:0.4;">⚓</span>
+        <div class="case-tag corp">Corporate</div>
+        <div class="case-share">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="case-outcome">Onboarding at scale</div>
+        <div class="case-title">Global Onboarding for a Maritime Group</div>
+        <div class="case-desc">AI avatar-led onboarding programme delivered in four languages across 12 countries. Time-to-productive for new joiners cut from six weeks to three.</div>
+        <div class="case-tools">
+          <span class="case-tool">AI Avatar</span>
+          <span class="case-tool">Learnworlds LMS</span>
+          <span class="case-tool">Multi-region</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="work-toggle-wrap">
+    <button class="btn-secondary work-toggle" type="button" onclick="toggleWorkGrid(this, 'work-grid-home')">
+      <span class="work-toggle-label-show">See all our work</span>
+      <span class="work-toggle-label-hide">Show less</span>
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CLIENT LOGOS — animated reel                                  -->
+<!-- ✏️ EDIT: Replace each logo-card with your real logo once      -->
+<!-- uploaded to your GitHub repo. Use the raw URL, e.g.:          -->
+<!--   <img src="assets/logos/oxford.png" alt="Oxford">            -->
+<!-- IMPORTANT: Keep the logos duplicated in both .reel-copy       -->
+<!-- groups so the scroll loops seamlessly.                        -->
+<!-- ============================================================ -->
+<div class="divider-grad"></div>
+<div class="section-sm">
+  <div class="sec-eyebrow" style="margin-bottom:24px;">Clients we've worked with</div>
+
+  <div class="logo-reel" aria-label="Client logos">
+    <div class="logo-reel-track">
+      <!-- FIRST COPY: your logos -->
+      <div class="logo-card"><div class="logo-card-text">CLIENT ONE</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT TWO</div></div>
+      <div class="logo-card dark-card"><div class="logo-card-text">CLIENT THREE</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT FOUR</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT FIVE</div></div>
+      <div class="logo-card dark-card"><div class="logo-card-text">CLIENT SIX</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT SEVEN</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT EIGHT</div></div>
+
+      <!-- SECOND COPY (must match first exactly for seamless loop) -->
+      <div class="logo-card"><div class="logo-card-text">CLIENT ONE</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT TWO</div></div>
+      <div class="logo-card dark-card"><div class="logo-card-text">CLIENT THREE</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT FOUR</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT FIVE</div></div>
+      <div class="logo-card dark-card"><div class="logo-card-text">CLIENT SIX</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT SEVEN</div></div>
+      <div class="logo-card"><div class="logo-card-text">CLIENT EIGHT</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TESTIMONIAL TRIO — three floating quote cards                 -->
+<!-- ✏️ EDIT: Replace quote text, author name and role.            -->
+<!-- ============================================================ -->
+<div class="divider-grad"></div>
+<div class="section-sm">
+  <div class="sec-header" style="margin-bottom:24px;">
+    <div class="sec-eyebrow">What clients say</div>
+    <h2 class="sec-h2">In their own words</h2>
+  </div>
+
+  <div class="quote-trio">
+    <div class="quote-card q1">
+      <div class="quote-body">We came to eXcelerate with a rough brief and a tight deadline. They pushed back on the bits that didn't make sense, delivered something far better than we asked for, and stayed with us through launch.</div>
+      <div class="quote-meta">
+        <span class="quote-author">Dr Amelia Harper</span>
+        <span class="quote-role">Head of Digital Learning, Russell Group University</span>
+      </div>
+    </div>
+
+    <div class="quote-card q2">
+      <div class="quote-body">Finally, an L&amp;D partner who actually understands our business before proposing a solution. The onboarding course they built has cut our time-to-productive from six weeks to three.</div>
+      <div class="quote-meta">
+        <span class="quote-author">Marcus Okafor</span>
+        <span class="quote-role">People Director, FinTech Scale-up</span>
+      </div>
+    </div>
+
+    <div class="quote-card q3">
+      <div class="quote-body">The AI avatar videos have been a genuine differentiator for our compliance training. Our completion rates went from 62% to 94% in one quarter. Can't recommend them highly enough.</div>
+      <div class="quote-meta">
+        <span class="quote-author">Priya Ravi</span>
+        <span class="quote-role">Head of Compliance, Maritime Group</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CTA BAND (anchor target: #contact)                            -->
+<!-- ============================================================ -->
+<div class="cta-band" id="contact">
+  <div class="sec-eyebrow" style="margin-bottom:16px;">Ready to get started?</div>
+  <div class="cta-h2">Let's build something remarkable.</div>
+  <p class="cta-sub">Whether you know exactly what you need or you're still figuring it out, drop us a line.</p>
+  <div class="cta-buttons">
+    <!-- ✏️ EDIT: Replace the mailto with your real email address -->
+    <a class="btn-primary" href="mailto:hello@exceleratelearning.co.uk">Email us directly</a>
+    <!-- ✏️ EDIT: Replace href with your Calendly URL -->
+    <a class="btn-secondary" href="https://calendly.com/" target="_blank" rel="noopener">Book a free 15-min call</a>
+    <a class="btn-li" href="https://www.linkedin.com/company/105195682" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      Follow on LinkedIn
+    </a>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                        -->
+<!-- ============================================================ -->
+<div class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <!-- ✏️ EDIT: logo src — swap to your GitHub raw URL once pushed, or keep the relative path -->
+      <img src="assets/logos/excelerate-mark.png" alt="eXcelerate Learning" onerror="this.style.display='none'">
+      <div class="footer-tagline">Bespoke solutions, remarkable results.</div>
+      <!-- ✏️ EDIT: Your real email address below -->
+      <div style="font-size:12px;color:var(--fg3);"><a href="mailto:hello@exceleratelearning.co.uk" class="footer-link">hello@exceleratelearning.co.uk</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">For you</div>
+      <div class="footer-links">
+        <a class="footer-link" href="higher-education.html">Higher Education</a>
+        <a class="footer-link" href="corporate.html">Corporate and SME</a>
+        <a class="footer-link" href="index.html#services">Services</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <div class="footer-links">
+        <a class="footer-link" href="index.html#our-work">Our Work</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="#contact">Contact</a>
+        <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+        <a class="footer-link" href="cookie-policy.html">Cookie Policy</a>
+        <a class="footer-link" href="#" onclick="if(window.exlConsent)window.exlConsent.openPrefs();return false;">Cookie settings</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Get in touch</div>
+      <div class="footer-links">
+        <a class="footer-link" style="color:var(--pink);" href="mailto:hello@exceleratelearning.co.uk">hello@exceleratelearning.co.uk</a>
+        <span class="footer-link">71-75 Shelton Street</span>
+        <span class="footer-link">Covent Garden, London</span>
+        <span class="footer-link">WC2H 9JQ</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 eXcelerate Learning Ltd</span>
+    <span>Bespoke solutions, remarkable results.</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SITE JS — expandable work grids + scroll-triggered animations -->
+<!-- ============================================================ -->
+<script>
+  // Toggle expandable work grids (homepage + HE page)
+  function toggleWorkGrid(btn, gridId) {
+    var grid = document.getElementById(gridId);
+    if (!grid) return;
+    var expanded = grid.classList.toggle('is-expanded');
+    btn.classList.toggle('is-expanded', expanded);
+    // When collapsing, scroll back up to the section header so user isn't stranded
+    if (!expanded) {
+      var section = grid.closest('.section, .section-sm');
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Fade-up scroll reveal for .impact-card (used on corporate page)
+  (function () {
+    var targets = document.querySelectorAll('.impact-card');
+    if (!targets.length || !('IntersectionObserver' in window)) {
+      targets.forEach(function (el) { el.classList.add('in-view'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    targets.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Scrollspy — highlight the nav link for whichever in-page section is in view
+  (function () {
+    var spyLinks = document.querySelectorAll('.nav-link[data-scrollspy]');
+    if (!spyLinks.length || !('IntersectionObserver' in window)) return;
+
+    var linkById = {};
+    spyLinks.forEach(function (link) {
+      var id = link.getAttribute('data-scrollspy');
+      var section = document.getElementById(id);
+      if (section) linkById[id] = { link: link, section: section };
+    });
+
+    function setActive(id) {
+      spyLinks.forEach(function (l) { l.classList.remove('active'); });
+      if (linkById[id]) linkById[id].link.classList.add('active');
+    }
+
+    var spyObserver = new IntersectionObserver(function (entries) {
+      // Pick the entry closest to the top that's currently intersecting
+      var best = null;
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          if (!best || entry.boundingClientRect.top < best.boundingClientRect.top) {
+            best = entry;
+          }
+        }
+      });
+      if (best) setActive(best.target.id);
+    }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
+
+    Object.keys(linkById).forEach(function (id) {
+      spyObserver.observe(linkById[id].section);
+    });
+  })();
+</script>
+
+<!-- Cookie consent banner -->
+<script src="consent.js" defer></script>
+
+</body>
+</html>

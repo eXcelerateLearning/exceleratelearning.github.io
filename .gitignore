@@ -1,0 +1,22 @@
+# Local-only backups (kept in OneDrive for safety, not pushed to GitHub)
+_backups/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node artefacts (in case we add tooling later)
+node_modules/
+npm-debug.log*
+.env
+.env.local

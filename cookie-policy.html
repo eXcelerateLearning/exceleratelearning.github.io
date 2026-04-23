@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookie Policy — eXcelerate Learning</title>
+<meta name="description" content="What cookies and similar technologies we use on exceleratelearning.co.uk, why we use them, and how to control them.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  /* Policy-page prose — mirrors privacy-policy.html */
+  .policy-wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+  .policy-wrap h2 { font-family: 'Rowdies', cursive; font-weight: 700; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -0.5px; line-height: 1.2; margin: 48px 0 16px; color: var(--fg1); }
+  .policy-wrap h2:first-of-type { margin-top: 0; }
+  .policy-wrap h2 .num { color: var(--blue); margin-right: 12px; font-weight: 400; }
+  .policy-wrap p { color: var(--fg2); font-size: 16px; line-height: 1.75; margin: 0 0 16px; }
+  .policy-wrap ul { color: var(--fg2); font-size: 16px; line-height: 1.75; padding-left: 22px; margin: 0 0 16px; }
+  .policy-wrap ul li { margin-bottom: 8px; }
+  .policy-wrap a { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(2,169,235,0.3); transition: border-color 0.2s, color 0.2s; }
+  .policy-wrap a:hover { color: var(--fg1); border-color: var(--fg1); }
+  .policy-wrap strong { color: var(--fg1); font-weight: 600; }
+  .policy-wrap .policy-meta { color: var(--fg3); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .policy-wrap .legal-note { border-left: 2px solid var(--blue); background: rgba(2,169,235,0.05); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0 32px; font-size: 14px; color: var(--fg2); }
+  .policy-wrap .legal-note strong { color: var(--fg1); }
+
+  /* Cookie table */
+  .cookie-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .cookie-table thead th { text-align: left; padding: 14px 16px; background: var(--surface-alt); color: var(--fg1); font-family: 'Rowdies', cursive; font-weight: 400; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 1px solid var(--border); }
+  .cookie-table tbody td { padding: 14px 16px; color: var(--fg2); border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+  .cookie-table tbody tr:last-child td { border-bottom: none; }
+  .cookie-table tbody td:first-child { color: var(--fg1); font-weight: 600; white-space: nowrap; }
+  .cookie-table .pill { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .cookie-table .pill.essential { background: rgba(40,186,169,0.15); color: var(--green); }
+  .cookie-table .pill.optional { background: rgba(255,0,251,0.15); color: var(--pink); }
+  .cookie-table .pill.anon { background: rgba(2,169,235,0.15); color: var(--blue); }
+  @media (max-width: 640px) {
+    .cookie-table, .cookie-table thead, .cookie-table tbody, .cookie-table tr, .cookie-table td, .cookie-table th { display: block; }
+    .cookie-table thead { display: none; }
+    .cookie-table tbody tr { border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .cookie-table tbody tr:last-child { border-bottom: none; }
+    .cookie-table tbody td { border: none; padding: 4px 16px; }
+    .cookie-table tbody td:first-child { padding-top: 12px; }
+    .cookie-table tbody td:before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--fg3); margin-bottom: 2px; }
+    .cookie-table tbody td:first-child:before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ SHARED NAV ═══════════════════════ -->
+<nav class="nav" id="site-nav">
+  <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('site-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-logo" href="index.html">
+    <img src="assets/logos/excelerate-mark.png" alt="eXcelerate Learning" onerror="this.style.display='none'">
+    <span class="nav-logo-text">e<span>X</span>celerate Learning</span>
+  </a>
+
+  <div class="nav-menu">
+    <a class="nav-link he" href="higher-education.html">Higher Education</a>
+    <a class="nav-link corp" href="corporate.html">Corporate</a>
+    <a class="nav-link" href="index.html#services">Services</a>
+    <a class="nav-link" href="index.html#our-work">Our Work</a>
+    <a class="nav-link" href="about.html">About</a>
+    <div class="nav-spacer"></div>
+    <a class="nav-li" href="https://www.linkedin.com/company/105195682" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      Follow on LinkedIn
+    </a>
+    <a class="nav-cta" href="mailto:hello@exceleratelearning.co.uk">Get in touch</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════ PAGE: COOKIE POLICY ═══════════════════════ -->
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow pink"></div>
+  <div class="hero-glow blue"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Legal</div>
+    <h1 class="hero-h1">Cookie <span class="grad-blue">Policy.</span></h1>
+    <p class="hero-sub">What cookies and similar technologies we use on this site, why we use them, and how to control them.</p>
+  </div>
+</div>
+
+<div class="divider-grad"></div>
+
+<div class="section">
+  <div class="policy-wrap">
+
+    <div class="policy-meta">Last updated: 23 April 2026</div>
+
+    <p>This Cookie Policy explains what cookies are, which ones we use on <strong>exceleratelearning.co.uk</strong>, and how you can control them. It sits alongside our <a href="privacy-policy.html">Privacy Policy</a>, which describes how we handle personal data more broadly.</p>
+
+    <p>This policy is written to comply with the <strong>UK GDPR</strong> and the <strong>Privacy and Electronic Communications Regulations (PECR)</strong>.</p>
+
+    <h2><span class="num">1.</span>What are cookies?</h2>
+    <p>Cookies are small text files that a website places on your device when you visit it. They let the site remember you, how you've used it, and what your preferences are. Some cookies are set by the site you're visiting (first-party cookies); others are set by third parties whose services the site uses (third-party cookies).</p>
+    <p>This policy also covers similar technologies — localStorage, pixels, tags — that work in the same way as cookies.</p>
+
+    <h2><span class="num">2.</span>How we use cookies</h2>
+    <p>We try to keep cookie use on this site to a minimum. We use them to:</p>
+    <ul>
+      <li>Make the site work properly and remember your choices (for example, whether you've accepted or declined analytics cookies).</li>
+      <li>Understand how visitors use the site in aggregate, so we can improve it.</li>
+    </ul>
+    <p>We <strong>do not</strong> use cookies for advertising, retargeting, or cross-site tracking.</p>
+
+    <h2><span class="num">3.</span>Cookies we use</h2>
+    <p>The table below lists the cookies and similar technologies active on this site at time of writing.</p>
+
+    <table class="cookie-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Provider</th>
+          <th>Purpose</th>
+          <th>Lifetime</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Name">exl_consent</td>
+          <td data-label="Provider">eXcelerate Learning (first-party)</td>
+          <td data-label="Purpose">Remembers your cookie consent choice so we don't ask again on every page.</td>
+          <td data-label="Lifetime">12 months</td>
+          <td data-label="Category"><span class="pill essential">Essential</span></td>
+        </tr>
+        <tr>
+          <td data-label="Name">_ga, _ga_*</td>
+          <td data-label="Provider">Google Analytics 4</td>
+          <td data-label="Purpose">Measures aggregated site usage (pages viewed, sessions, approximate location). Only loaded if you accept analytics cookies.</td>
+          <td data-label="Lifetime">Up to 13 months</td>
+          <td data-label="Category"><span class="pill optional">Optional — analytics</span></td>
+        </tr>
+        <tr>
+          <td data-label="Name">(none)</td>
+          <td data-label="Provider">Cloudflare Web Analytics</td>
+          <td data-label="Purpose">Cookie-free, privacy-first traffic measurement. Does not track you across sites or use persistent identifiers.</td>
+          <td data-label="Lifetime">None</td>
+          <td data-label="Category"><span class="pill anon">Anonymous — no cookies</span></td>
+        </tr>
+        <tr>
+          <td data-label="Name">__cf_bm</td>
+          <td data-label="Provider">Cloudflare</td>
+          <td data-label="Purpose">Bot-management cookie that helps distinguish humans from automated traffic, for site security and reliability.</td>
+          <td data-label="Lifetime">30 minutes</td>
+          <td data-label="Category"><span class="pill essential">Essential</span></td>
+        </tr>
+        <tr>
+          <td data-label="Name">Calendly cookies</td>
+          <td data-label="Provider">Calendly</td>
+          <td data-label="Purpose">Set only if you click through to book a call via our Calendly link. Used by Calendly to run the scheduling interface.</td>
+          <td data-label="Lifetime">Session / varies</td>
+          <td data-label="Category"><span class="pill optional">Third-party (on click)</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Categories explained:</p>
+    <ul>
+      <li><strong>Essential</strong> — needed for the site to work or to remember your consent choice. These are set without requiring consent.</li>
+      <li><strong>Optional — analytics</strong> — help us understand site usage. These are only set if you accept.</li>
+      <li><strong>Anonymous — no cookies</strong> — measurement that doesn't use cookies or persistent identifiers, so doesn't require consent under PECR.</li>
+      <li><strong>Third-party (on click)</strong> — set by an external service only when you choose to engage with it (for example, booking via Calendly).</li>
+    </ul>
+
+    <h2><span class="num">4.</span>Your choices</h2>
+    <p>When you first visit the site, you'll see a cookie banner asking whether you accept optional analytics cookies. You can:</p>
+    <ul>
+      <li><strong>Accept all</strong> — we'll set essential and analytics cookies.</li>
+      <li><strong>Reject optional</strong> — we'll only set essential cookies. Analytics will be disabled.</li>
+      <li><strong>Change your mind any time</strong> — click <a href="#" onclick="if(window.exlConsent)window.exlConsent.openPrefs();return false;">Cookie settings</a> in the footer of any page to revisit the banner.</li>
+    </ul>
+    <p>You can also manage or delete cookies directly in your browser. The <a href="https://ico.org.uk/for-the-public/online/cookies/" target="_blank" rel="noopener">ICO's guide to cookies</a> is a good starting point. Most browsers also let you block third-party cookies or browse in a private/incognito window that clears them at the end of the session.</p>
+
+    <h2><span class="num">5.</span>Third-party cookies</h2>
+    <p>Some cookies are set by third parties we use to run the site (Google, Cloudflare, Calendly). We've linked to each provider's own privacy information below so you can read how they process data:</p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+      <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></li>
+      <li><a href="https://calendly.com/privacy" target="_blank" rel="noopener">Calendly Privacy Notice</a></li>
+    </ul>
+
+    <h2><span class="num">6.</span>Changes to this policy</h2>
+    <p>We may update this Cookie Policy to reflect changes to the cookies we use or to comply with legal requirements. The "last updated" date at the top of the page shows when the most recent change was made. If we add new optional cookies, we'll ask for your consent again before setting them.</p>
+
+    <h2><span class="num">7.</span>Contact us</h2>
+    <p>Questions about cookies or this policy? Email <a href="mailto:hello@exceleratelearning.co.uk">hello@exceleratelearning.co.uk</a>.</p>
+
+    <div class="legal-note">
+      <strong>Note:</strong> this is a plain-English summary of how cookies work on this site. The exact set of cookies may vary slightly as we add or remove services. We'll keep this page in sync with what's actually running.
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                        -->
+<!-- ============================================================ -->
+<div class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logos/excelerate-mark.png" alt="eXcelerate Learning" onerror="this.style.display='none'">
+      <div class="footer-tagline">Bespoke solutions, remarkable results.</div>
+      <div style="font-size:12px;color:var(--fg3);"><a href="mailto:hello@exceleratelearning.co.uk" class="footer-link">hello@exceleratelearning.co.uk</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">For you</div>
+      <div class="footer-links">
+        <a class="footer-link" href="higher-education.html">Higher Education</a>
+        <a class="footer-link" href="corporate.html">Corporate and SME</a>
+        <a class="footer-link" href="index.html#services">Services</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <div class="footer-links">
+        <a class="footer-link" href="index.html#our-work">Our Work</a>
+        <a class="footer-link" href="about.html">About Us</a>
+        <a class="footer-link" href="index.html#contact">Contact</a>
+        <a class="footer-link" href="privacy-policy.html">Privacy Policy</a>
+        <a class="footer-link" href="cookie-policy.html">Cookie Policy</a>
+        <a class="footer-link" href="#" onclick="if(window.exlConsent)window.exlConsent.openPrefs();return false;">Cookie settings</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Get in touch</div>
+      <div class="footer-links">
+        <a class="footer-link" style="color:var(--pink);" href="mailto:hello@exceleratelearning.co.uk">hello@exceleratelearning.co.uk</a>
+        <span class="footer-link">71-75 Shelton Street</span>
+        <span class="footer-link">Covent Garden, London</span>
+        <span class="footer-link">WC2H 9JQ</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 eXcelerate Learning Ltd</span>
+    <span>Bespoke solutions, remarkable results.</span>
+  </div>
+</div>
+
+<!-- Cookie consent banner -->
+<script src="consent.js" defer></script>
+
+</body>
+</html>
