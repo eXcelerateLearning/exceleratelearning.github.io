@@ -312,24 +312,24 @@
   <div class="logo-reel" aria-label="Client logos">
     <div class="logo-reel-track">
       <!-- FIRST COPY: your logos -->
-      <div class="logo-card"><div class="logo-card-text">CLIENT ONE</div></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT TWO</div></div>
+      <div class="logo-card"><img src="assets/logos/HE_Charles.png" alt="Charles University"></div>
+      <div class="logo-card"><img src="assets/logos/HE_Milan.png" alt="Università degli Studi di Milano"></div>
       <div class="logo-card dark-card"><img src="assets/logos/IPM_Corporate.png" alt="IPM"></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT FOUR</div></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT FIVE</div></div>
-      <div class="logo-card dark-card"><div class="logo-card-text">CLIENT SIX</div></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT SEVEN</div></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT EIGHT</div></div>
+      <div class="logo-card"><img src="assets/logos/HE_Warsaw.png" alt="Uniwersytet Warszawski"></div>
+      <div class="logo-card"><img src="assets/logos/HE_Heidelburg.png" alt="Heidelberg Institute of Global Health"></div>
+      <div class="logo-card"><img src="assets/logos/Corporate_KIO.png" alt="Kick It Out"></div>
+      <div class="logo-card"><img src="assets/logos/Corporate_Western.png" alt="Western Energy Services Corp."></div>
+      <div class="logo-card"><img src="assets/logos/Corporate_Westminster.png" alt="University of Westminster"></div>
 
       <!-- SECOND COPY (must match first exactly for seamless loop) -->
-      <div class="logo-card"><div class="logo-card-text">CLIENT ONE</div></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT TWO</div></div>
+      <div class="logo-card"><img src="assets/logos/HE_Charles.png" alt="Charles University"></div>
+      <div class="logo-card"><img src="assets/logos/HE_Milan.png" alt="Università degli Studi di Milano"></div>
       <div class="logo-card dark-card"><img src="assets/logos/IPM_Corporate.png" alt="IPM"></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT FOUR</div></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT FIVE</div></div>
-      <div class="logo-card dark-card"><div class="logo-card-text">CLIENT SIX</div></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT SEVEN</div></div>
-      <div class="logo-card"><div class="logo-card-text">CLIENT EIGHT</div></div>
+      <div class="logo-card"><img src="assets/logos/HE_Warsaw.png" alt="Uniwersytet Warszawski"></div>
+      <div class="logo-card"><img src="assets/logos/HE_Heidelburg.png" alt="Heidelberg Institute of Global Health"></div>
+      <div class="logo-card"><img src="assets/logos/Corporate_KIO.png" alt="Kick It Out"></div>
+      <div class="logo-card"><img src="assets/logos/Corporate_Western.png" alt="Western Energy Services Corp."></div>
+      <div class="logo-card"><img src="assets/logos/Corporate_Westminster.png" alt="University of Westminster"></div>
     </div>
   </div>
 </div>
@@ -495,21 +495,4 @@
       var best = null;
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          if (!best || entry.boundingClientRect.top < best.boundingClientRect.top) {
-            best = entry;
-          }
-        }
-      });
-      if (best) setActive(best.target.id);
-    }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
-
-    Object.keys(linkById).forEach(function (id) {
-      spyObserver.observe(linkById[id].section);
-    });
-  })();
-</script>
-
-<!-- Cookie consent banner -->
-<script src="consent.js" defer></script>
-
-</bo
+          if (!best || entry.boundingClientRect.top < best.bou
