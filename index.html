@@ -495,4 +495,22 @@
       var best = null;
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          if (!best || entry.boundingClientRect.top < best.bou
+          if (!best || entry.boundingClientRect.top < best.boundingClientRect.top) {
+            best = entry;
+          }
+        }
+      });
+      if (best) setActive(best.target.id);
+    }, { rootMargin: '-80px 0px -55% 0px', threshold: 0 });
+
+    Object.keys(linkById).forEach(function (id) {
+      spyObserver.observe(linkById[id].section);
+    });
+  })();
+</script>
+
+<!-- Cookie consent banner -->
+<script src="consent.js" defer></script>
+
+</body>
+</html>
