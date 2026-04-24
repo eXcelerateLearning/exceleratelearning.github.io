@@ -164,14 +164,16 @@
         </div>
       </div>
       <div class="case-body">
-        <div class="case-outcome">Academic staff development</div>
-        <div class="case-title">Interactive HE Toolkit for Academics</div>
-        <div class="case-desc">An interactive staff development toolkit built in Articulate Storyline for a Higher Education institution. Designed to support academics in developing their digital teaching practice.</div>
+        <div class="case-outcome">Embedding sustainability in teaching</div>
+        <div class="case-title">Interactive Higher Education Toolkit (SCORM)</div>
+        <div class="case-desc">Developed in Articulate Storyline, this interactive toolkit equips academics with accessible, high-impact resources on Education for Sustainable Development to enhance their teaching practice. Combining expert insight with applied learning, the experience is designed to embed ESD seamlessly into module and course creation from day one.</div>
         <div class="case-tools">
           <span class="case-tool">Articulate Storyline</span>
           <span class="case-tool">SCORM</span>
-          <span class="case-tool">HE institution</span>
+          <span class="case-tool">ESD / SDG 4.2</span>
+          <span class="case-tool">University of Westminster</span>
         </div>
+        <button class="case-read-more" type="button" onclick="openCaseStudy('cs-westminster-esd')">Read more</button>
       </div>
     </div>
 
@@ -440,10 +442,93 @@
   </div>
 </div>
 
+
+<!-- ============================================================ -->
+<!-- CASE STUDY MODAL: University of Westminster — ESD Toolkit     -->
+<!-- Opens from any .case-read-more button with id 'cs-westminster-esd' -->
+<!-- ============================================================ -->
+<div class="cs-modal-overlay" id="cs-westminster-esd" role="dialog" aria-modal="true" aria-labelledby="cs-westminster-esd-title">
+  <div class="cs-modal">
+    <button class="cs-modal-close" type="button" aria-label="Close case study" onclick="closeCaseStudy(this)">×</button>
+    <div class="cs-modal-video">
+      <video controls playsinline preload="none"
+             poster="assets/case-studies/HE_Westminster_ESD_Toolkit/Poster_image.png">
+        <source src="assets/case-studies/HE_Westminster_ESD_Toolkit/Promo_Video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="cs-modal-body">
+      <div class="cs-modal-eyebrow">Case study — Higher Education</div>
+      <h2 class="cs-modal-title" id="cs-westminster-esd-title">Interactive Higher Education Toolkit (SCORM)</h2>
+      <div class="cs-modal-client">Client: <strong>University of Westminster</strong> · Education for Sustainable Development (SDG 4.2)</div>
+      <div class="cs-modal-tools">
+        <span class="case-tool">Articulate Storyline</span>
+        <span class="case-tool">SCORM</span>
+        <span class="case-tool">ESD / SDG 4.2</span>
+        <span class="case-tool">Academic staff CPD</span>
+        <span class="case-tool">Interactive toolkit</span>
+      </div>
+      <div class="cs-modal-text">
+        <p>This project was designed to support a large higher education institution in embedding Education for Sustainable Development (ESD), aligned to Sustainable Development Goal (SDG) 4.2, across teaching and learning practice. The ambition was not just to raise awareness, but to create a practical, scalable solution that enabled academics to confidently apply ESD principles within their own disciplines.</p>
+        <p>At the core of the solution was an interactive, SCORM-compliant toolkit built in Articulate Storyline. This provided a structured yet flexible learning experience, allowing academic staff to engage with the content in a way that suited their context, time constraints, and level of prior knowledge. The experience followed a clear journey — introducing key concepts, exploring real-world applications, and then supporting translation into practice.</p>
+        <p>To bring the content to life, the toolkit integrated a rich blend of media and resources. This included a series of short, focused videos featuring expert perspectives and authentic case studies, helping to ground theory in real teaching environments. Alongside this, downloadable PDFs offered deeper dives into specific themes, providing practical guidance, frameworks, and prompts that academics could take away and use in their own modules and course design.</p>
+        <p>The course structure itself was intentionally designed around application. Rather than presenting ESD as a standalone concept, the content was framed through familiar academic challenges — such as curriculum design, assessment, and student engagement. This ensured the learning felt immediately relevant and reduced the barrier to adoption. Each section built towards a toolkit of adaptable resources, enabling academics to move from understanding to action with confidence.</p>
+        <p>A key strength of the project was its focus on usability and integration. The toolkit was designed to fit seamlessly into existing academic workflows, recognising the time pressures and competing priorities faced by staff. Clear navigation, concise content, and practical outputs ensured that engagement translated into meaningful change, rather than remaining as passive learning.</p>
+        <p>Since implementation, the toolkit has been used across the organisation as a central resource for embedding ESD and supporting the institution’s broader sustainability agenda. It has enabled a consistent yet flexible approach, allowing different faculties and disciplines to interpret and apply SDG 4.2 in ways that are authentic to their subject areas, while still aligning to a shared institutional vision.</p>
+        <p>Ultimately, the project demonstrates how thoughtfully designed digital learning can move beyond awareness-raising to drive real change in practice. By combining expert insight, applied learning, and accessible resources within a single, cohesive experience, the toolkit supports academics to embed sustainability meaningfully — not as an add-on, but as an integral part of teaching and learning.</p>
+      </div>
+      <div class="cs-modal-cta">
+        <a class="btn-primary" href="#contact" onclick="closeCaseStudy()">Talk to us about a similar project</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================ -->
 <!-- SITE JS — expandable work grids + scroll-triggered animations -->
 <!-- ============================================================ -->
 <script>
+  // Case study modal — open/close + video control
+  function openCaseStudy(id) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add('is-open');
+    document.body.classList.add('cs-modal-open');
+    var video = modal.querySelector('video');
+    if (video) {
+      try { video.currentTime = 0; } catch (e) {}
+      video.muted = false;
+      var p = video.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () {
+          // Browser blocked sound autoplay — fall back to muted autoplay
+          video.muted = true;
+          video.play().catch(function () {});
+        });
+      }
+    }
+  }
+  function closeCaseStudy(trigger) {
+    var modal;
+    if (trigger instanceof Element) {
+      modal = trigger.closest('.cs-modal-overlay');
+    } else {
+      modal = document.querySelector('.cs-modal-overlay.is-open');
+    }
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    document.body.classList.remove('cs-modal-open');
+    var video = modal.querySelector('video');
+    if (video) { try { video.pause(); video.currentTime = 0; } catch (e) {} }
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeCaseStudy();
+  });
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList && e.target.classList.contains('cs-modal-overlay')) {
+      closeCaseStudy(e.target);
+    }
+  });
+
   // Toggle expandable work grids (homepage + HE page)
   function toggleWorkGrid(btn, gridId) {
     var grid = document.getElementById(gridId);
