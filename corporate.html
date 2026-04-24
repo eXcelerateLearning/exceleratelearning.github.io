@@ -150,23 +150,24 @@
 
   <div class="impact-grid" id="impact-grid">
 
-    <!-- IMPACT CARD 1 — FCA compliance -->
-    <!-- ✏️ EDIT: Replace project content / media / client logo -->
+    <!-- IMPACT CARD 1 — Mentoring: A Practical Toolkit -->
     <div class="impact-card">
       <div class="impact-media">
-        <!-- ✏️ EDIT: drop <img src="..."> or <video autoplay muted loop playsinline><source src="..." type="video/mp4"></video> here -->
-        <div class="impact-media-emoji">🛡️</div>
-        <!-- ✏️ EDIT: Client logo — swap src for GitHub raw URL once pushed -->
+        <video autoplay muted loop playsinline preload="metadata"
+               poster="assets/case-studies/Corporate_Academy_Mentoring_Toolkit/Poster_image.png">
+          <source src="assets/case-studies/Corporate_Academy_Mentoring_Toolkit/hero.mp4" type="video/mp4">
+        </video>
         <div class="impact-client-logo">
-          <img src="assets/clients/fintech-client.png" alt="Client logo" onerror="this.parentElement.textContent='🏦';this.parentElement.style.fontSize='22px';">
+          <span style="font-size:20px;">🤝</span>
         </div>
-        <div class="impact-stat">62% → 94% completion</div>
+        <div class="impact-stat">SCORM · 6 sections</div>
       </div>
       <div class="impact-body">
-        <div class="impact-project">FCA Compliance Learning Pathway</div>
-        <div class="impact-overview">A modular compliance pathway covering the full FCA handbook, built around real advisor scenarios. Scenario branching, knowledge checks and a manager dashboard for evidencing competence at audit.</div>
-        <div class="impact-quote">Finally an L&amp;D partner who understood the regulator before writing a single slide. The compliance pathway they built has become our internal benchmark.</div>
-        <div class="impact-attribution">People Director · London Fintech</div>
+        <div class="impact-project">Mentoring: A Practical Toolkit</div>
+        <div class="impact-overview">Designed for a leading financial services client as part of a new internal mentoring programme championing women in mentoring. A SCORM-compliant toolkit that blends academic rigour with bold, AI-illustrated storytelling — turning six core mentoring papers into practical tools mentors can use from day one.</div>
+        <div class="impact-quote">Research-grounded, visually bold, and built for busy mentors — a consistent tone and standard for mentoring across the business.</div>
+        <div class="impact-attribution">Financial services · mentoring programme lead</div>
+        <button class="case-read-more" type="button" onclick="openCaseStudy('cs-mentoring-toolkit')">Read more</button>
       </div>
     </div>
 
@@ -330,10 +331,92 @@
   </div>
 </div>
 
+
+<!-- ============================================================ -->
+<!-- CASE STUDY MODAL: Mentoring — A Practical Toolkit              -->
+<!-- Opens from any .case-read-more button with id 'cs-mentoring-toolkit' -->
+<!-- ============================================================ -->
+<div class="cs-modal-overlay" id="cs-mentoring-toolkit" role="dialog" aria-modal="true" aria-labelledby="cs-mentoring-toolkit-title">
+  <div class="cs-modal">
+    <button class="cs-modal-close" type="button" aria-label="Close case study" onclick="closeCaseStudy(this)">×</button>
+    <div class="cs-modal-video">
+      <video controls playsinline preload="none"
+             poster="assets/case-studies/Corporate_Academy_Mentoring_Toolkit/Poster_image.png">
+        <source src="assets/case-studies/Corporate_Academy_Mentoring_Toolkit/Promo_Video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="cs-modal-body">
+      <div class="cs-modal-eyebrow">Case study — Corporate</div>
+      <h2 class="cs-modal-title" id="cs-mentoring-toolkit-title">Mentoring: A Practical Toolkit</h2>
+      <div class="cs-modal-client">Client: <strong>Leading financial services organisation</strong> · internal mentoring programme championing women in mentoring</div>
+      <div class="cs-modal-tools">
+        <span class="case-tool">Articulate Storyline</span>
+        <span class="case-tool">SCORM</span>
+        <span class="case-tool">AI illustration</span>
+        <span class="case-tool">Academic research</span>
+        <span class="case-tool">Women in mentoring</span>
+      </div>
+      <div class="cs-modal-text">
+        <p>This project was developed to support the launch of a new mentoring programme within a major financial services organisation, with a particular focus on championing women in mentoring across business and finance. The ambition was to create a resource that set mentors up for success from the outset, giving them both the theoretical foundations and the practical tools to build meaningful, productive mentoring relationships. While the toolkit was designed for this specific client, it was built with wider reach in mind, ready to be made available to other organisations looking to strengthen their own mentoring culture.</p>
+        <p>At the heart of the toolkit is a SCORM-compliant learning experience structured around the who, what, why, when, where, and how of mentoring. Each section draws on six academically grounded papers on mentoring practice, distilling the research into clear, practical takeaways that mentors can apply in their day-to-day conversations. This approach gives the toolkit genuine credibility while stripping away the jargon that so often gets in the way, making it equally valuable for those new to mentoring and those looking to deepen an established practice.</p>
+        <p>One of the most distinctive features of the toolkit is its visual identity. The content is brought to life through bold, sharp cartoon-style illustrations created using AI, depicting mentoring stories, characters, and concepts in a way that feels fresh, memorable, and engaging. This storytelling approach gives the experience a strong sense of personality and makes often abstract ideas immediately relatable. It also reflects a wider design intention, which was to move mentoring training away from dry, text-heavy formats and towards something that mentors genuinely enjoy working through.</p>
+        <p>Each of the six sections is anchored by a practical model that learners can take away and use in their own mentoring relationships. These include a mentoring matrix, Venn diagrams, and clear process maps, giving mentors tangible frameworks to support their thinking and decision-making. Alongside this sits a full resources section, where learners can access the underpinning research and download a suite of practical guides, including roles and responsibilities, mentoring agreements, and supporting frameworks. This combination ensures the learning translates directly into action, rather than staying in the theoretical space.</p>
+        <p>The toolkit was intentionally designed to work for mentors at different stages of their journey. For those stepping into mentoring for the first time, it offers a confidence-building foundation grounded in evidence. For more experienced mentors, it provides a richer lens through which to reflect on and refine their practice. This dual focus has made it a versatile resource, capable of supporting mentors across the breadth of the programme.</p>
+        <p>Since launch, the toolkit has been well used by senior managers within the organisation and has served as a strong, engaging start to the wider mentoring programme. It has helped set a consistent tone and standard for mentoring across the business, while equipping individual mentors with the mindset and tools to lead meaningful relationships.</p>
+        <p>Ultimately, the project shows how research-led content, thoughtful visual design, and practical application can come together to make mentoring training genuinely compelling, and to support a new generation of mentors to do their best work.</p>
+      </div>
+      <div class="cs-modal-cta">
+        <a class="btn-primary" href="#contact" onclick="closeCaseStudy()">Talk to us about a similar project</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================ -->
 <!-- SITE JS — expandable work grids + scroll-triggered animations -->
 <!-- ============================================================ -->
 <script>
+  // Case study modal — open/close + video control
+  function openCaseStudy(id) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add('is-open');
+    document.body.classList.add('cs-modal-open');
+    var video = modal.querySelector('video');
+    if (video) {
+      try { video.currentTime = 0; } catch (e) {}
+      video.muted = false;
+      var p = video.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () {
+          video.muted = true;
+          video.play().catch(function () {});
+        });
+      }
+    }
+  }
+  function closeCaseStudy(trigger) {
+    var modal;
+    if (trigger instanceof Element) {
+      modal = trigger.closest('.cs-modal-overlay');
+    } else {
+      modal = document.querySelector('.cs-modal-overlay.is-open');
+    }
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    document.body.classList.remove('cs-modal-open');
+    var video = modal.querySelector('video');
+    if (video) { try { video.pause(); video.currentTime = 0; } catch (e) {} }
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeCaseStudy();
+  });
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.classList && e.target.classList.contains('cs-modal-overlay')) {
+      closeCaseStudy(e.target);
+    }
+  });
+
   function toggleWorkGrid(btn, gridId) {
     var grid = document.getElementById(gridId);
     if (!grid) return;
