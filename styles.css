@@ -1460,3 +1460,93 @@ body.cs-modal-open { overflow: hidden; }
   box-shadow: 0 8px 18px rgba(255,204,0,0.2);
 }
 
+/* ======================================================
+   Featured testimonial — large hero quote (Dean Cooper)
+   ====================================================== */
+.quote-featured {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px 56px 40px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 80px rgba(255,0,251,0.05);
+}
+.quote-featured::before {
+  content: '\201C';
+  position: absolute;
+  top: -28px;
+  left: 28px;
+  font-family: 'Rowdies', cursive;
+  font-size: 180px;
+  line-height: 1;
+  color: var(--pink);
+  opacity: 0.18;
+  pointer-events: none;
+}
+.quote-featured::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  pointer-events: none;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, rgba(255,0,251,0.5), rgba(2,169,235,0.45)) border-box;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  animation: quoteFeaturedPulse 6s ease-in-out infinite;
+}
+@keyframes quoteFeaturedPulse {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.85; }
+}
+.quote-featured-body {
+  position: relative;
+  z-index: 1;
+  font-family: 'Rowdies', cursive;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--fg1);
+  margin-bottom: 28px;
+}
+.quote-featured-meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.quote-featured-attrib { display: flex; flex-direction: column; }
+.quote-featured-author {
+  font-family: 'Rowdies', cursive;
+  font-size: 16px;
+  color: var(--fg1);
+}
+.quote-featured-role {
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.quote-featured-logo {
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+}
+.quote-featured-logo img { height: 28px; width: auto; display: block; }
+
+@media (max-width: 720px) {
+  .quote-featured { padding: 40px 24px 28px; }
+  .quote-featured-body { font-size: 17px; line-height: 1.55; }
+  .quote-featured::before { font-size: 120px; top: -16px; left: 16px; }
+}
+
