@@ -1553,3 +1553,15 @@ body.cs-modal-open { overflow: hidden; }
 /* Wordmark is baked into the new logo image — hide the text label */
 .nav-logo-text { display: none !important; }
 
+/* Footer wordmark — Rowdies in white, sits above the tagline */
+.footer-wordmark {
+  font-family: 'Rowdies', cursive;
+  font-size: 22px;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+  margin-top: -4px;
+  margin-bottom: -10px;
+}
+
