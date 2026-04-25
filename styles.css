@@ -31,7 +31,7 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
   display: flex; align-items: center; gap: 4px; padding: 0 40px; height: 64px;
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; margin-right: 24px; text-decoration: none; }
-.nav-logo img { height: 34px; }
+.nav-logo img { height: 46px; }
 .nav-logo-text { font-family: 'Rowdies', cursive; font-size: 17px; color: var(--fg1); letter-spacing: -0.3px; }
 .nav-logo-text span { color: #ffffff; }
 .nav-link { padding: 7px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--fg2); text-decoration: none; cursor: pointer; transition: all 0.2s; white-space: nowrap; border: none; background: none; font-family: 'Open Sans', sans-serif; }
@@ -546,7 +546,7 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
     z-index: 2;
   }
   .nav-logo img {
-    height: 32px;
+    height: 36px;
   }
 
   /* "eXcelerate Learning" text absolute-centred */
@@ -1549,4 +1549,7 @@ body.cs-modal-open { overflow: hidden; }
   .quote-featured-body { font-size: 17px; line-height: 1.55; }
   .quote-featured::before { font-size: 120px; top: -16px; left: 16px; }
 }
+
+/* Wordmark is baked into the new logo image — hide the text label */
+.nav-logo-text { display: none !important; }
 
