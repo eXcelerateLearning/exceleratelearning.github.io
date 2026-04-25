@@ -1423,3 +1423,40 @@ body.cs-modal-open { overflow: hidden; }
   }
 }
 
+/* ======================================================
+   Service CTA buttons (homepage Services section)
+   ====================================================== */
+.service-cta {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.card.c-green .service-cta {
+  background: rgba(40,186,169,0.14);
+  border: 1px solid rgba(40,186,169,0.45);
+  color: var(--green);
+}
+.card.c-green .service-cta:hover {
+  background: rgba(40,186,169,0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(40,186,169,0.2);
+}
+.card.c-yellow .service-cta {
+  background: rgba(255,204,0,0.14);
+  border: 1px solid rgba(255,204,0,0.45);
+  color: var(--yellow);
+}
+.card.c-yellow .service-cta:hover {
+  background: rgba(255,204,0,0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(255,204,0,0.2);
+}
+
