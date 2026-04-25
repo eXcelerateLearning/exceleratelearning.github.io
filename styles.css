@@ -1375,3 +1375,51 @@ body.cs-modal-open { overflow: hidden; }
   .cs-modal-videos { grid-template-columns: 1fr 1fr; }
 }
 
+/* ======================================================
+   LMS Setup & Management feature section (corporate page)
+   ====================================================== */
+.lw-feature {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 56px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.lw-carousel-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 14;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #0c0c1f;
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.55), 0 0 60px rgba(40,186,169,0.08);
+}
+.lw-feature-body p {
+  font-size: 14.5px;
+  color: var(--fg2);
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+.lw-feature-body .hero-sub { font-size: 16px; color: var(--fg1); margin-bottom: 18px; }
+.lw-feature-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+.lw-feature .case-read-more { margin-top: 8px; }
+
+@media (max-width: 880px) {
+  .lw-feature {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 480px;
+  }
+  .lw-carousel-frame {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
