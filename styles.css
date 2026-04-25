@@ -1506,10 +1506,10 @@ body.cs-modal-open { overflow: hidden; }
 .quote-featured-body {
   position: relative;
   z-index: 1;
-  font-family: 'Rowdies', cursive;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  font-size: 22px;
-  line-height: 1.55;
+  font-size: 18px;
+  line-height: 1.7;
   color: var(--fg1);
   margin-bottom: 28px;
 }
@@ -1528,10 +1528,11 @@ body.cs-modal-open { overflow: hidden; }
   color: var(--fg1);
 }
 .quote-featured-role {
-  font-size: 12.5px;
-  letter-spacing: 0.06em;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--fg3);
   margin-top: 4px;
 }
 .quote-featured-logo {
@@ -1546,7 +1547,7 @@ body.cs-modal-open { overflow: hidden; }
 
 @media (max-width: 720px) {
   .quote-featured { padding: 40px 24px 28px; }
-  .quote-featured-body { font-size: 17px; line-height: 1.55; }
+  .quote-featured-body { font-size: 16.5px; line-height: 1.65; }
   .quote-featured::before { font-size: 120px; top: -16px; left: 16px; }
 }
 
