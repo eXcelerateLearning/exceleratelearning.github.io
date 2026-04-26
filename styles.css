@@ -1694,7 +1694,8 @@ body.cs-modal-open { overflow: hidden; }
   max-width: 420px;
   aspect-ratio: 9 / 16;
   margin-left: auto;
-  background: #16162A; /* matches page bg so any subpixel edge is invisible */
+  /* No background fill — let the page hero (and its glows) show through
+     where the video's mask fades to transparent. */
 }
 .hero-avatar-video {
   position: absolute;
@@ -1703,41 +1704,41 @@ body.cs-modal-open { overflow: hidden; }
   height: 100%;
   object-fit: cover;
   display: block;
-  /* Soft fade at the bottom of the video so any dark vignette in the
-     source blends back into the page background. */
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
-          mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+  /* Fade the top and bottom edges to transparent so the page's pink
+     glow (and other hero accents) wash naturally around the avatar. */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 70%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 70%, transparent 100%);
 }
 
-/* Tap-to-unmute pill, bottom-centre on the video */
-.hero-avatar-unmute {
+/* Persistent corner controls — mute toggle + play/pause toggle */
+.hero-avatar-controls {
   position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
+  top: 14px;
+  right: 14px;
   z-index: 3;
+  display: flex;
+  gap: 8px;
+}
+.hav-btn {
+  width: 36px;
+  height: 36px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: rgba(22,22,42,0.85);
-  border: 1px solid rgba(2,169,235,0.45);
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(22,22,42,0.7);
+  border: 1px solid rgba(255,255,255,0.18);
   backdrop-filter: blur(10px);
   color: #ffffff;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.6px;
   cursor: pointer;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.4);
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
 }
-.hero-avatar-unmute:hover {
+.hav-btn:hover {
   background: rgba(22,22,42,0.95);
-  transform: translateX(-50%) translateY(-2px);
+  border-color: rgba(2,169,235,0.55);
+  transform: translateY(-1px);
 }
-.hero-avatar-unmute[hidden] { display: none; }
+.hav-btn svg { display: block; }
 
 @media (max-width: 880px) {
   .hero-avatar {
