@@ -1683,18 +1683,18 @@ body.cs-modal-open { overflow: hidden; }
 
 /* ======================================================
    Hero avatar video frame (homepage / corporate / HE pages)
-   Portrait 9:16, sits in the right column of the hero grid
+   Portrait 9:16. Seamless with the page — no rounded corners,
+   no shadow frame. The video is rendered against #16162A so
+   its edges blend straight into the hero background. Bottom
+   gradient mask hides any darker vignette in the source.
    ====================================================== */
 .hero-avatar {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
   aspect-ratio: 9 / 16;
   margin-left: auto;
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--bg);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.55), 0 0 80px rgba(2,169,235,0.08);
+  background: #16162A; /* matches page bg so any subpixel edge is invisible */
 }
 .hero-avatar-video {
   position: absolute;
@@ -1703,7 +1703,42 @@ body.cs-modal-open { overflow: hidden; }
   height: 100%;
   object-fit: cover;
   display: block;
+  /* Soft fade at the bottom of the video so any dark vignette in the
+     source blends back into the page background. */
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 70%, transparent 100%);
 }
+
+/* Tap-to-unmute pill, bottom-centre on the video */
+.hero-avatar-unmute {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(22,22,42,0.85);
+  border: 1px solid rgba(2,169,235,0.45);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.hero-avatar-unmute:hover {
+  background: rgba(22,22,42,0.95);
+  transform: translateX(-50%) translateY(-2px);
+}
+.hero-avatar-unmute[hidden] { display: none; }
+
 @media (max-width: 880px) {
   .hero-avatar {
     max-width: 320px;

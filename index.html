@@ -80,11 +80,15 @@
       <!--     <source src="YOUR-VIDEO.mp4" type="video/mp4">             -->
       <!--   </video>                                                    -->
       <!-- ============================================================ -->
-      <div class="hero-avatar">
-        <video class="hero-avatar-video" autoplay muted loop playsinline preload="metadata"
-               poster="assets/home_page_avatar_poster.jpg" controls>
-          <source src="assets/home_page_avatar_web.mp4" type="video/mp4">
+      <div class="hero-avatar" id="hero-avatar-home">
+        <video class="hero-avatar-video" autoplay loop playsinline preload="metadata"
+               poster="assets/home_page_avatar_v2_poster.jpg">
+          <source src="assets/home_page_avatar_v2_web.mp4" type="video/mp4">
         </video>
+        <button class="hero-avatar-unmute" type="button" aria-label="Unmute" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          <span>Tap for sound</span>
+        </button>
       </div>
     </div>
   </div>
@@ -831,6 +835,60 @@
     Object.keys(linkById).forEach(function (id) {
       spyObserver.observe(linkById[id].section);
     });
+  })();
+
+  // Hero avatar — try autoplay with sound, fall back to muted + tap-to-unmute
+  (function () {
+    var wrap = document.getElementById('hero-avatar-home');
+    if (!wrap) return;
+    var video = wrap.querySelector('video');
+    var btn = wrap.querySelector('.hero-avatar-unmute');
+    if (!video) return;
+
+    function showUnmute() {
+      if (btn) btn.hidden = false;
+    }
+    function hideUnmute() {
+      if (btn) btn.hidden = true;
+    }
+
+    // First, try to play unmuted
+    video.muted = false;
+    var p = video.play();
+    if (p && typeof p.then === 'function') {
+      p.then(function () {
+        // Worked — autoplay with sound succeeded
+        hideUnmute();
+      }).catch(function () {
+        // Browser blocked sound autoplay — fall back to muted
+        video.muted = true;
+        video.play().catch(function () {});
+        showUnmute();
+      });
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        video.muted = false;
+        video.play().catch(function () {});
+        hideUnmute();
+      });
+    }
+
+    // First user interaction anywhere on the page also unmutes
+    function firstInteractionUnmute() {
+      if (video.muted) {
+        video.muted = false;
+        video.play().catch(function () {});
+        hideUnmute();
+      }
+      document.removeEventListener('click', firstInteractionUnmute);
+      document.removeEventListener('touchstart', firstInteractionUnmute);
+      document.removeEventListener('keydown', firstInteractionUnmute);
+    }
+    document.addEventListener('click', firstInteractionUnmute);
+    document.addEventListener('touchstart', firstInteractionUnmute);
+    document.addEventListener('keydown', firstInteractionUnmute);
   })();
 </script>
 
