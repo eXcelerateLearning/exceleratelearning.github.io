@@ -1626,3 +1626,32 @@ body.cs-modal-open { overflow: hidden; }
 .case-actions .case-read-more,
 .case-actions .case-cta-ext { margin-top: 0; }
 
+/* Video coming soon placeholder for impact-card media slot */
+.impact-media-coming {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.impact-media-coming-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: rgba(255,0,251,0.15);
+  border: 1.5px solid rgba(255,0,251,0.4);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--pink);
+  font-size: 22px;
+  padding-left: 4px; /* visually centre the play triangle */
+}
+.impact-media-coming-label {
+  font-family: 'Rowdies', cursive;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
