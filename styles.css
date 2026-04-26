@@ -1655,3 +1655,29 @@ body.cs-modal-open { overflow: hidden; }
   color: rgba(255,255,255,0.7);
 }
 
+/* Video coming soon BADGE — sits over an image-style impact-media */
+.impact-media-coming-badge {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(22,22,42,0.78);
+  border: 1px solid rgba(255,0,251,0.45);
+  backdrop-filter: blur(8px);
+  font-family: 'Rowdies', cursive;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #ffd9fb;
+}
+.impact-media-coming-badge::before {
+  content: '▶';
+  color: var(--pink);
+  font-size: 10px;
+}
+
