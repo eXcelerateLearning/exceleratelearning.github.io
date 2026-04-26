@@ -1566,3 +1566,64 @@ body.cs-modal-open { overflow: hidden; }
   margin-bottom: -10px;
 }
 
+/* ======================================================
+   Pink corp variant of .case-read-more (auto via :has)
+   ====================================================== */
+.case-card:has(.case-tag.corp) .case-read-more {
+  background: rgba(255,0,251,0.10);
+  color: var(--pink);
+  border-color: rgba(255,0,251,0.3);
+}
+.case-card:has(.case-tag.corp) .case-read-more:hover {
+  background: rgba(255,0,251,0.22);
+  border-color: rgba(255,0,251,0.55);
+}
+
+/* Corporate impact-card Read more (matches impact-quote pink ink) */
+.impact-card .case-read-more {
+  background: rgba(255,0,251,0.10);
+  color: var(--pink);
+  border-color: rgba(255,0,251,0.3);
+  margin-top: 14px;
+}
+.impact-card .case-read-more:hover {
+  background: rgba(255,0,251,0.22);
+  border-color: rgba(255,0,251,0.55);
+}
+
+/* External CTA pill on a card (sits next to .case-read-more) */
+.case-cta-ext {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px; font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid;
+  transition: all 0.2s ease;
+}
+/* Pink (corp) external CTA — Synthesia / LearnWorlds when used on corp cards */
+.case-card .case-cta-ext,
+.impact-card .case-cta-ext {
+  background: linear-gradient(135deg, rgba(255,0,251,0.22), rgba(255,0,99,0.18));
+  color: #ffd9fb;
+  border-color: rgba(255,0,251,0.45);
+}
+.case-card .case-cta-ext:hover,
+.impact-card .case-cta-ext:hover {
+  background: linear-gradient(135deg, rgba(255,0,251,0.35), rgba(255,0,99,0.3));
+  border-color: rgba(255,0,251,0.7);
+  transform: translateY(-1px);
+}
+
+/* Two-button row inside a .case-body or .impact-body */
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.case-actions .case-read-more,
+.case-actions .case-cta-ext { margin-top: 0; }
+
