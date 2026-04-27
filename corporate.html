@@ -60,11 +60,22 @@
       <!-- ============================================================ -->
       <!-- ✏️ VIDEO PLACEHOLDER: Corporate Page Hero                    -->
       <!-- ============================================================ -->
-      <div class="video-ph">
-        <div class="vp-play">▶</div>
-        <div class="vp-tag">Avatar video — Corporate page</div>
-        <div class="vp-title">Training your people actually want to do</div>
-        <div class="vp-script">"Most training falls flat because it's built for everyone and designed for no one. At eXcelerate Learning, we start with your team, your goals, and the gaps you need to close."</div>
+      <div class="hero-avatar" id="hero-avatar-corp">
+        <video class="hero-avatar-video" autoplay loop playsinline preload="metadata"
+               poster="assets/corporate_avatar_poster.jpg">
+          <source src="assets/corporate_avatar_web.mp4" type="video/mp4">
+        </video>
+        <div class="hero-avatar-controls">
+          <button class="hav-btn hav-play" type="button" aria-label="Play or pause">
+            <svg class="hav-ico-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect></svg>
+            <svg class="hav-ico-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+          <span class="hav-divider" aria-hidden="true"></span>
+          <button class="hav-btn hav-mute" type="button" aria-label="Mute or unmute">
+            <svg class="hav-ico-on" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.05a4.5 4.5 0 0 0 2.5-4.02zm-2.5-9.45v2.06A7 7 0 0 1 19 12a7 7 0 0 1-5 6.71v2.06A9 9 0 0 0 21 12 9 9 0 0 0 14 2.55z"></path></svg>
+            <svg class="hav-ico-off" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" hidden><path d="M3 9v6h4l5 5V4L7 9H3zm13.59 3 2.71 2.71-1.41 1.41L15.17 13.41 12.46 16.12l-1.41-1.41 2.71-2.71-2.71-2.71 1.41-1.41 2.71 2.71 2.71-2.71 1.41 1.41z"></path></svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -156,8 +167,8 @@
       <p class="hero-sub">Your full L&amp;D function, without the full-time hire. From building your academy from scratch to creating courses, managing learners, and running the platform day to day — end-to-end LMS support designed to save time, cut cost, and create real impact across your business.</p>
       <p>Whether you’re starting from a blank page or trying to make sense of a setup that’s grown messy over time, the work meets you where you are. LearnWorlds sits at the heart of this offer as the platform of choice — a view formed over years of working across the full spread of LMS platforms.</p>
       <div class="lw-feature-cta">
-        <button class="btn-red" type="button" onclick="openCaseStudy('cs-lms-service')">Read the full service</button>
         <a class="btn-primary" href="https://get.learnworlds.com/oitu4eu6gqiz" target="_blank" rel="noopener">Explore LearnWorlds →</a>
+        <button class="btn-red" type="button" onclick="openCaseStudy('cs-lms-service')">Read the full service</button>
         <a class="btn-red" href="#contact">Get in touch</a>
       </div>
     </div>
@@ -264,7 +275,6 @@
     <div class="impact-card" data-reveal="hidden">
       <div class="impact-media">
         <img src="assets/case-studies/Corporate_SCORM_KIO/Poster_image.jpg" alt="Tackling Sectarianism in Football — Kick It Out course poster">
-        <div class="impact-media-coming-badge">Video coming soon</div>
         <div class="impact-stat">30-min SCORM · public audience</div>
       </div>
       <div class="impact-body">
@@ -300,7 +310,7 @@
 
   <!-- Show more / show less toggle for impact grid -->
   <div class="work-toggle-wrap">
-    <button class="btn-secondary work-toggle" type="button" onclick="toggleWorkGrid(this, 'impact-grid')">
+    <button class="btn-secondary corp work-toggle" type="button" onclick="toggleWorkGrid(this, 'impact-grid')">
       <span class="work-toggle-label-show">Show 3 more projects ↓</span>
       <span class="work-toggle-label-hide">Show fewer projects ↑</span>
     </button>
@@ -628,6 +638,77 @@
 <!-- SITE JS — expandable work grids + scroll-triggered animations -->
 <!-- ============================================================ -->
 <script>
+
+  // Hero avatar — try autoplay with sound; persistent mute + play controls
+  (function () {
+    var wrap = document.getElementById('hero-avatar-corp');
+    if (!wrap) return;
+    var video = wrap.querySelector('video');
+    var muteBtn = wrap.querySelector('.hav-mute');
+    var playBtn = wrap.querySelector('.hav-play');
+    if (!video) return;
+
+    function syncMuteIcon() {
+      if (!muteBtn) return;
+      var on = muteBtn.querySelector('.hav-ico-on');
+      var off = muteBtn.querySelector('.hav-ico-off');
+      if (video.muted) { on.hidden = true; off.hidden = false; }
+      else { on.hidden = false; off.hidden = true; }
+    }
+    function syncPlayIcon() {
+      if (!playBtn) return;
+      var pauseI = playBtn.querySelector('.hav-ico-pause');
+      var playI = playBtn.querySelector('.hav-ico-play');
+      if (video.paused) { pauseI.hidden = true; playI.hidden = false; }
+      else { pauseI.hidden = false; playI.hidden = true; }
+    }
+
+    video.muted = false;
+    var p = video.play();
+    if (p && typeof p.then === 'function') {
+      p.then(function () { syncMuteIcon(); syncPlayIcon(); })
+       .catch(function () {
+         video.muted = true;
+         video.play().catch(function () {});
+         syncMuteIcon(); syncPlayIcon();
+       });
+    } else { syncMuteIcon(); syncPlayIcon(); }
+
+    if (muteBtn) {
+      muteBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        if (!video.muted) video.play().catch(function () {});
+        syncMuteIcon();
+      });
+    }
+    if (playBtn) {
+      playBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (video.paused) video.play().catch(function () {});
+        else video.pause();
+        syncPlayIcon();
+      });
+    }
+    video.addEventListener('play', syncPlayIcon);
+    video.addEventListener('pause', syncPlayIcon);
+    video.addEventListener('volumechange', syncMuteIcon);
+
+    function firstInteractionUnmute(e) {
+      if (e && e.target && e.target.closest && e.target.closest('.hero-avatar-controls')) return;
+      if (video.muted) {
+        video.muted = false;
+        video.play().catch(function () {});
+        syncMuteIcon();
+      }
+      document.removeEventListener('click', firstInteractionUnmute);
+      document.removeEventListener('touchstart', firstInteractionUnmute);
+      document.removeEventListener('keydown', firstInteractionUnmute);
+    }
+    document.addEventListener('click', firstInteractionUnmute);
+    document.addEventListener('touchstart', firstInteractionUnmute);
+    document.addEventListener('keydown', firstInteractionUnmute);
+  })();
   // Case study modal — open/close + video control
   function openCaseStudy(id) {
     var modal = document.getElementById(id);
