@@ -164,6 +164,8 @@ Three small vanilla-JS helpers live inline in `index.html`, `higher-education.ht
 | 2026-04-23 | Cookie Policy page added | `cookie-policy.html` — 7 sections + inventory table of every cookie/tech on the site. Pill categories (Essential / Optional analytics / Anonymous / Third-party on click). Responsive card-stack table layout at ≤640px. |
 | 2026-04-23 | Cookie consent banner added | `consent.js` — self-injecting banner with Accept all / Reject optional / Close buttons. First-party `exl_consent` cookie (12 months, SameSite=Lax, Secure). Close defaults to reject-optional (safer under PECR). Dispatches `window` `exl:consent` CustomEvent on decision + on every subsequent page load. |
 | 2026-04-23 | Footers updated across all pages | Privacy Policy + Cookie Policy + Cookie settings links added to the Company column of footers on `index.html`, `about.html`, `higher-education.html`, `corporate.html`. Old `href="#"` Privacy stub on homepage replaced. |
+| 2026-04-23 | Site pushed to GitHub | Repo: `eXcelerateLearning/exceleratelearning.github.io`. Clean initial commit replaces the earlier single-file mockup (mockup backed up to `_backups/2026-04-23-remote-repo-snapshot/`). Repo includes `.gitignore` (excludes `_backups/`), `.gitattributes` (LF line endings), `.nojekyll` (disables Jekyll), `README.md`. Live at **https://exceleratelearning.github.io/** via GitHub Pages (auto-enabled because repo name matches the `<org>.github.io` pattern). |
+| 2026-04-27 | Migration prep — files ready for Wix → GitHub Pages cutover | New files: `CNAME` (`exceleratelearning.co.uk`), `sitemap.xml` (all 6 pages with lastmod + priority), `robots.txt` (allow all + sitemap pointer), `analytics.js` (GA4 loader, gated on `exl:consent` event, no-op while Measurement ID is the placeholder). Edited all 6 HTML pages: added canonical URL, full Open Graph block (type/site_name/locale/url/title/description/image/image:alt), Twitter Card block (summary_large_image variant), and `<script src="analytics.js" defer></script>` after the consent.js script. OG image points to `assets/eXcelerate_Learning_square.png`. |
 
 ---
 
@@ -183,15 +185,30 @@ Three small vanilla-JS helpers live inline in `index.html`, `higher-education.ht
 
 **Hosting migration — Wix (Names.co.uk domain) → GitHub Pages (free).**
 
-Steps:
-1. Create GitHub repo, push the 4 HTML files + `styles.css` + `assets/`.
-2. Enable GitHub Pages in repo Settings → Pages (deploy from `main`).
-3. Add a `CNAME` file at the repo root containing `exceleratelearning.co.uk`.
-4. At Names.co.uk (DNS), point the domain at GitHub Pages:
-   - A records → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `www` CNAME → `<username>.github.io`
-5. Tick "Enforce HTTPS" once DNS propagates (usually <1 hour).
-6. Delete Wix site (or point it elsewhere first as backup) after confirmation.
+Status:
+- [x] GitHub repo created and site pushed — `eXcelerateLearning/exceleratelearning.github.io`
+- [x] Live preview via GitHub Pages — `https://exceleratelearning.github.io/` (auto-enabled because repo name matches `<org>.github.io`)
+- [x] `CNAME` file created at repo root with `exceleratelearning.co.uk` — *2026-04-27, ready to push*
+- [x] `sitemap.xml`, `robots.txt`, OG/Twitter meta tags, GA4 consent-gated stub (`analytics.js`) — *2026-04-27, ready to push*
+- [ ] **Push the new files to the repo** (CNAME, sitemap.xml, robots.txt, analytics.js + the edited HTML pages) via GitHub web UI Add file → Upload files
+- [ ] At Names.co.uk DNS, point the domain at GitHub Pages:
+  - A records (apex `@`) → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+  - `www` CNAME → `exceleratelearning.github.io`
+- [ ] In repo Settings → Pages, enter `exceleratelearning.co.uk` as Custom domain, tick "Enforce HTTPS" once DNS propagates (usually <1 hour)
+- [ ] Disconnect Wix from the domain (keeping Wix site live on its `*.wixsite.com` URL as 30-day backup, then cancel)
+- [ ] Paste real GA4 Measurement ID into `analytics.js` once the property is created
+- [ ] Verify Search Console + submit `sitemap.xml`
+
+**Working with the repo going forward:**
+- The initial push was done from a Linux sandbox using a short-lived PAT. The PAT has been revoked.
+- For ongoing work, **clone the repo to a local folder outside OneDrive** to avoid OneDrive sync conflicting with `.git/`:
+  ```
+  cd C:\Users\chris\Projects\
+  gh auth login      # one-time browser OAuth
+  gh repo clone eXcelerateLearning/exceleratelearning.github.io
+  ```
+- Edit files there; `git add -A && git commit -m "..." && git push` to deploy.
+- The OneDrive `Website Development` folder can stay as a Claude workspace; changes made there can be copied into the git clone when ready to commit.
 
 ### Analytics stack (recommended)
 - **Google Analytics 4** — full traffic + behaviour data. Free. Snippet goes in `<head>` on every page. Needs Measurement ID (`G-XXXXXXXXXX`).

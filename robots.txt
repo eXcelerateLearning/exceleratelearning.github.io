@@ -1,0 +1,10 @@
+# robots.txt for exceleratelearning.co.uk
+# Allow all reputable crawlers full access.
+
+User-agent: *
+Allow: /
+
+# Don't index local backups (also excluded from the repo via .gitignore — belt and braces)
+Disallow: /_backups/
+
+Sitemap: https://exceleratelearning.co.uk/sitemap.xml
