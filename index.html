@@ -98,7 +98,7 @@
       <!--   </video>                                                    -->
       <!-- ============================================================ -->
       <div class="hero-avatar" id="hero-avatar-home">
-        <video class="hero-avatar-video" autoplay loop playsinline preload="metadata"
+        <video class="hero-avatar-video" autoplay muted loop playsinline preload="metadata"
                poster="assets/home_page_avatar_v4_poster.jpg">
           <source src="assets/home_page_avatar_v4_web.mp4" type="video/mp4">
         </video>
@@ -885,20 +885,10 @@
       else { pauseI.hidden = false; playI.hidden = true; }
     }
 
-    // Try unmuted autoplay first
-    video.muted = false;
-    var p = video.play();
-    if (p && typeof p.then === 'function') {
-      p.then(function () {
-        syncMuteIcon(); syncPlayIcon();
-      }).catch(function () {
-        video.muted = true;
-        video.play().catch(function () {});
-        syncMuteIcon(); syncPlayIcon();
-      });
-    } else {
-      syncMuteIcon(); syncPlayIcon();
-    }
+    // Always start muted — the user opts into audio via the mute button
+    video.muted = true;
+    video.play().catch(function () {});
+    syncMuteIcon(); syncPlayIcon();
 
     if (muteBtn) {
       muteBtn.addEventListener('click', function (e) {
@@ -919,23 +909,6 @@
     video.addEventListener('play', syncPlayIcon);
     video.addEventListener('pause', syncPlayIcon);
     video.addEventListener('volumechange', syncMuteIcon);
-
-    // First user interaction anywhere unmutes if still muted
-    function firstInteractionUnmute(e) {
-      // Ignore clicks that already came from the avatar's own controls — they handle themselves
-      if (e && e.target && e.target.closest && e.target.closest('.hero-avatar-controls')) return;
-      if (video.muted) {
-        video.muted = false;
-        video.play().catch(function () {});
-        syncMuteIcon();
-      }
-      document.removeEventListener('click', firstInteractionUnmute);
-      document.removeEventListener('touchstart', firstInteractionUnmute);
-      document.removeEventListener('keydown', firstInteractionUnmute);
-    }
-    document.addEventListener('click', firstInteractionUnmute);
-    document.addEventListener('touchstart', firstInteractionUnmute);
-    document.addEventListener('keydown', firstInteractionUnmute);
   })();
 </script>
 
