@@ -884,14 +884,16 @@
     }
 
     if (muteBtn) {
-      muteBtn.addEventListener('click', function () {
+      muteBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
         video.muted = !video.muted;
         if (!video.muted) video.play().catch(function () {});
         syncMuteIcon();
       });
     }
     if (playBtn) {
-      playBtn.addEventListener('click', function () {
+      playBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
         if (video.paused) video.play().catch(function () {});
         else video.pause();
         syncPlayIcon();
@@ -902,7 +904,9 @@
     video.addEventListener('volumechange', syncMuteIcon);
 
     // First user interaction anywhere unmutes if still muted
-    function firstInteractionUnmute() {
+    function firstInteractionUnmute(e) {
+      // Ignore clicks that already came from the avatar's own controls — they handle themselves
+      if (e && e.target && e.target.closest && e.target.closest('.hero-avatar-controls')) return;
       if (video.muted) {
         video.muted = false;
         video.play().catch(function () {});
