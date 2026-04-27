@@ -1682,11 +1682,9 @@ body.cs-modal-open { overflow: hidden; }
 }
 
 /* ======================================================
-   Hero avatar video frame (homepage / corporate / HE pages)
-   Portrait 9:16. Seamless with the page — no rounded corners,
-   no shadow frame. The video is rendered against #16162A so
-   its edges blend straight into the hero background. Bottom
-   gradient mask hides any darker vignette in the source.
+   Hero avatar video frame — card-style border matching the
+   audience cards (1px outer rim + 2px gradient top, 20px radius).
+   Chris adds the pink gradient on the .corp variant.
    ====================================================== */
 .hero-avatar {
   position: relative;
@@ -1694,8 +1692,26 @@ body.cs-modal-open { overflow: hidden; }
   max-width: 420px;
   aspect-ratio: 9 / 16;
   margin-left: auto;
-  /* No background fill — let the page hero (and its glows) show through
-     where the video's mask fades to transparent. */
+  border-radius: 20px;
+  border: 1px solid rgba(255,0,251,0.25);
+  background: rgba(255,0,251,0.06);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.hero-avatar:hover {
+  border-color: rgba(255,0,251,0.45);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 50px rgba(255,0,251,0.15);
+}
+/* Heavier 2px gradient top line (matches .aud-card.corp::before) */
+.hero-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pink), var(--red));
+  z-index: 2;
+  pointer-events: none;
 }
 .hero-avatar-video {
   position: absolute;
@@ -1704,20 +1720,24 @@ body.cs-modal-open { overflow: hidden; }
   height: 100%;
   object-fit: cover;
   display: block;
-  /* Fade the top and bottom edges to transparent so the page's pink
-     glow (and other hero accents) wash naturally around the avatar. */
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 70%, transparent 100%);
-          mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 70%, transparent 100%);
 }
 
-/* Persistent corner controls — mute toggle + play/pause toggle */
+/* Bottom controls bar — pill, sits over the lower portion of the video */
 .hero-avatar-controls {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
   z-index: 3;
-  display: flex;
-  gap: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(12, 12, 24, 0.78);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
 }
 .hav-btn {
   width: 36px;
@@ -1726,24 +1746,32 @@ body.cs-modal-open { overflow: hidden; }
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(22,22,42,0.7);
-  border: 1px solid rgba(255,255,255,0.18);
-  backdrop-filter: blur(10px);
+  background: transparent;
+  border: 0;
   color: #ffffff;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  padding: 0;
 }
 .hav-btn:hover {
-  background: rgba(22,22,42,0.95);
-  border-color: rgba(2,169,235,0.55);
-  transform: translateY(-1px);
+  background: rgba(255,0,251,0.25);
+  color: #ffffff;
 }
+.hav-btn:active { transform: scale(0.94); }
 .hav-btn svg { display: block; }
+.hav-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255,255,255,0.18);
+  margin: 0 2px;
+}
 
 @media (max-width: 880px) {
   .hero-avatar {
     max-width: 320px;
     margin: 0 auto;
   }
+  .hero-avatar-controls { bottom: 14px; }
+  .hav-btn { width: 38px; height: 38px; }
 }
 
