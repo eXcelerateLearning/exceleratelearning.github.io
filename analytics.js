@@ -26,7 +26,7 @@
   'use strict';
 
   // ✏️ EDIT — paste your GA4 Measurement ID here, e.g. 'G-ABC123XYZ'
-  var GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+  var GA4_MEASUREMENT_ID = 'G-GQQM5JT1SD';
 
   // Bail out cleanly if the placeholder hasn't been replaced yet —
   // safer than firing requests to an invalid property.
