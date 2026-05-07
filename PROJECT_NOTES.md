@@ -1,7 +1,7 @@
 # eXcelerate Learning — Website Project Notes
 
 Working memory for Chris + Claude as we iterate on the site.
-Last updated: 2026-04-23
+Last updated: 2026-05-07
 
 ---
 
@@ -17,7 +17,7 @@ Last updated: 2026-04-23
 **Contact details currently in files:**
 - Email: `hello@exceleratelearning.co.uk` ✓ live
 - Address: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ
-- Calendly link: placeholder (`https://calendly.com/`)
+- Calendly link: `https://calendly.com/hello-exceleratelearning/30min` ✓ live
 - LinkedIn: `https://www.linkedin.com/company/105195682` ✓ live business page
 
 ---
@@ -104,8 +104,8 @@ Located in: `C:\Users\chris\OneDrive\Documents\Claude\Projects\Website Developme
 
 - [x] ~~Email address~~ — updated to `hello@exceleratelearning.co.uk` across all pages
 - [x] ~~LinkedIn URL~~ — set to business page `https://www.linkedin.com/company/105195682` everywhere
-- [ ] Calendly URL (currently bare `https://calendly.com/`)
-- [ ] Logo files — HTML references `assets/logos/excelerate-mark.png` but files not yet dropped into the folder. `onerror` on the `<img>` hides the broken icon until real files arrive. Chris will host via GitHub; replace relative paths with raw GitHub URLs when ready.
+- [x] ~~Calendly URL~~ — live booking link `https://calendly.com/hello-exceleratelearning/30min` set across all 4 pages (2026-05-07)
+- [x] ~~Logo files~~ — rendering correctly across the site (confirmed 2026-05-07)
 - [ ] Client logos for corporate impact cards — `assets/clients/*.png` referenced, graceful emoji fallback baked in.
 - [ ] About-page hero image — `assets/about/about-hero.jpg` referenced, fallback block renders if missing.
 - [x] ~~Privacy Policy page~~ — `privacy-policy.html` live. Ported + improved the Wix content to meet UK GDPR (added legal basis, full rights list, ICO complaint route, international transfers note, retention schedule, automated decision-making statement, concrete contact details). **Recommend a solicitor cast an eye over it before launch.**
@@ -166,6 +166,12 @@ Three small vanilla-JS helpers live inline in `index.html`, `higher-education.ht
 | 2026-04-23 | Footers updated across all pages | Privacy Policy + Cookie Policy + Cookie settings links added to the Company column of footers on `index.html`, `about.html`, `higher-education.html`, `corporate.html`. Old `href="#"` Privacy stub on homepage replaced. |
 | 2026-04-23 | Site pushed to GitHub | Repo: `eXcelerateLearning/exceleratelearning.github.io`. Clean initial commit replaces the earlier single-file mockup (mockup backed up to `_backups/2026-04-23-remote-repo-snapshot/`). Repo includes `.gitignore` (excludes `_backups/`), `.gitattributes` (LF line endings), `.nojekyll` (disables Jekyll), `README.md`. Live at **https://exceleratelearning.github.io/** via GitHub Pages (auto-enabled because repo name matches the `<org>.github.io` pattern). |
 | 2026-04-27 | Migration prep — files ready for Wix → GitHub Pages cutover | New files: `CNAME` (`exceleratelearning.co.uk`), `sitemap.xml` (all 6 pages with lastmod + priority), `robots.txt` (allow all + sitemap pointer), `analytics.js` (GA4 loader, gated on `exl:consent` event, no-op while Measurement ID is the placeholder). Edited all 6 HTML pages: added canonical URL, full Open Graph block (type/site_name/locale/url/title/description/image/image:alt), Twitter Card block (summary_large_image variant), and `<script src="analytics.js" defer></script>` after the consent.js script. OG image points to `assets/eXcelerate_Learning_square.png`. |
+| 2026-04-27 | Hero avatars now muted by default | Removed the "any-click-anywhere unmutes" handler from `index.html`, `corporate.html`, `higher-education.html`. Avatars autoplay muted via the existing `muted` HTML attribute (added to the three hero `<video>` tags) and the simplified JS boot block. The dedicated mute/unmute button on the avatar continues to give users explicit control. Case study modal videos still open unmuted on click — that's explicit user intent. |
+| 2026-04-27 | **Step 2A executed — site now live on `https://exceleratelearning.co.uk`** | Files pushed via GitHub web UI ("Add files via upload" commit at 11:31). Custom domain set in Settings → Pages. DNS edited in Wix's panel (Wix is still authoritative nameserver via `ns10/11.wixdns.net`, but A records and www CNAME now point at GitHub Pages). MX + SPF TXT preserved. HTTPS cert provisioned. Verified via incognito + dnschecker.org (4 A records owned by GitHub Inc. globally). Wix dashboard shows domain as "Managed by third party / Connected by DNS". Wix site retained on its `*.wixsite.com` URL as 30-day rollback. Two-step DNS plan: Step 2B (move DNS to Names.co.uk + change nameservers) scheduled ~2026-05-04. Wix cancellation ~2026-05-27. |
+| 2026-04-28 | GA4 Measurement ID wired into `analytics.js` | Chris created the GA4 property and shared the standard gtag.js snippet. Only the ID was needed — `G-GQQM5JT1SD` — pasted over the placeholder on line 29 of `analytics.js`. The rest of Google's snippet was deliberately discarded because our existing loader already handles consent-gating, anonymisation, and Google Signals/ad personalisation opt-out for UK GDPR. Local file updated; **still needs to be pushed to GitHub** (web UI Add file → Upload files) before it goes live. After deploy, verify in GA4 Realtime via incognito + accept cookie banner. |
+| 2026-04-28 | GA4 verified live | After deploy, GA4 Realtime showed 1 active user (Chris in incognito, UK). Setup banner "No data received from your website yet" still showed at the top — that's a stale onboarding card that takes 24–48h to clear and is not indicative. The Realtime panel is the source of truth. |
+| 2026-05-07 | Calendly booking link wired up across the site | Replaced the bare `https://calendly.com/` placeholder on `index.html`, `about.html`, `corporate.html`, `higher-education.html` with the real booking URL `https://calendly.com/hello-exceleratelearning/30min`. Stripped the now-irrelevant `month=2026-05` query param so the link doesn't lock to a specific month. Removed the stale `<!-- ✏️ EDIT: Replace href with your Calendly URL -->` comment on the homepage. Cookie/privacy policy references to Calendly as a third party were left as-is — they're correct. |
+| 2026-04-28 | SEO pass — titles, meta descriptions, structured data | All four main pages got full SEO refresh. **Titles** rewritten to lead with target keywords + brand: home = "Bespoke E-Learning & L&D Consultancy UK", HE = "Higher Education E-Learning & Academic CPD", corporate = "Corporate L&D, Bespoke Training & LMS Setup UK", about = "About \| PGCHE-Qualified E-Learning Consultancy UK". OG + Twitter Card titles/descriptions kept in lockstep. **Meta descriptions** rewritten to ~150-160 chars, target phrase density ~2-3%, no stuffing. Added `<meta name="keywords">` (low SEO weight today but harmless and used by some smaller engines). **JSON-LD structured data**: ProfessionalService schema on homepage with full org details, address, areaServed, sameAs (LinkedIn), knowsAbout array, founder Person, and OfferCatalog of 5 services. Service schemas on HE + corporate pages with EducationalAudience / BusinessAudience targeting and focused OfferCatalogs. AboutPage + Person schema on about.html with PGCHE EducationalOccupationalCredential. **H1 audit**: each page has exactly one H1, all contain at least one target keyword. Left H1s as-is — they're brand-voice critical. **Alt text audit**: case study images, client logos, and hero photo all have descriptive alt text. Left as-is. |
 
 ---
 
@@ -173,11 +179,11 @@ Three small vanilla-JS helpers live inline in `index.html`, `higher-education.ht
 
 1. **Real assets** — drop the actual logo files into `assets/logos/`, or swap the `<img src>` values for GitHub raw URLs once the repo is live.
 2. **Replace placeholder content** — the 4 new homepage cards, 4 new HE cards, and 6 impact cards have Claude-written placeholder copy, quotes and stats. Swap for real project details. Search for `✏️ EDIT` comments to find them.
-3. **Real Calendly URL** — still a bare placeholder across all pages.
+3. ~~**Real Calendly URL**~~ — Done 2026-05-07. `https://calendly.com/hello-exceleratelearning/30min` live across all 4 pages.
 4. **GitHub setup** — recommended: keep paths relative (`assets/…`) and commit the media files into the repo. Simpler, cache-friendly, no broken links if the repo ever moves.
 5. **Hero videos** — the `.video-ph` placeholder blocks on homepage, HE and corporate are still waiting for real avatar videos.
 6. **Solicitor review of Privacy Policy** — I improved the Wix version to meet UK GDPR basics, but a real lawyer should sanity-check it before launch, particularly the retention periods (I've put sensible defaults — 24 months for enquiry correspondence, 6 years for client records per HMRC, 14 months for analytics) and the named third parties.
-7. **GA4 wiring** — `consent.js` dispatches `exl:consent` events with `detail.analytics === 'granted'`. Listener pattern is documented at the top of `consent.js`. Drop the gtag.js loader inside that listener when Chris has the Measurement ID.
+7. ~~**GA4 wiring**~~ — Done 2026-04-28. Measurement ID `G-GQQM5JT1SD` is in `analytics.js`. Still needs to be pushed to the live repo and verified in GA4 Realtime.
 
 ---
 
@@ -190,14 +196,17 @@ Status:
 - [x] Live preview via GitHub Pages — `https://exceleratelearning.github.io/` (auto-enabled because repo name matches `<org>.github.io`)
 - [x] `CNAME` file created at repo root with `exceleratelearning.co.uk` — *2026-04-27, ready to push*
 - [x] `sitemap.xml`, `robots.txt`, OG/Twitter meta tags, GA4 consent-gated stub (`analytics.js`) — *2026-04-27, ready to push*
-- [ ] **Push the new files to the repo** (CNAME, sitemap.xml, robots.txt, analytics.js + the edited HTML pages) via GitHub web UI Add file → Upload files
-- [ ] At Names.co.uk DNS, point the domain at GitHub Pages:
-  - A records (apex `@`) → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-  - `www` CNAME → `exceleratelearning.github.io`
-- [ ] In repo Settings → Pages, enter `exceleratelearning.co.uk` as Custom domain, tick "Enforce HTTPS" once DNS propagates (usually <1 hour)
-- [ ] Disconnect Wix from the domain (keeping Wix site live on its `*.wixsite.com` URL as 30-day backup, then cancel)
-- [ ] Paste real GA4 Measurement ID into `analytics.js` once the property is created
-- [ ] Verify Search Console + submit `sitemap.xml`
+- [x] **Pushed the new files to the repo** — 2026-04-27 11:31 commit "Add files via upload" carried CNAME, sitemap.xml, robots.txt, analytics.js + the edited HTML pages.
+- [x] **Step 2A — DNS edits in Wix panel done.** A records replaced (3 Wix IPs deleted, 4 GitHub Pages IPs added: `185.199.108-111.153`). `www` CNAME edited from `cdn1.wixdns.net` → `exceleratelearning.github.io`. MX (`athena.hosts.co.uk` / `hermes.hosts.co.uk`) and SPF TXT (`v=spf1 include:spf.hosts.co.uk ~all`) left untouched. NS still Wix (`ns10.wixdns.net` / `ns11.wixdns.net`) — moves in Step 2B.
+- [x] **GitHub Pages Custom domain set** — `exceleratelearning.co.uk`. HTTPS cert provisioned (verified loading in incognito over `https://`).
+- [ ] **Tick Enforce HTTPS** in repo Settings → Pages once status dot is consistently green. (As of EOD 2026-04-27 the dot was flipping green/yellow during cert provisioning — likely settled by next session.)
+- [ ] **Step 2B (~2026-05-04) — migrate DNS off Wix to Names.co.uk.** See MIGRATION_RUNBOOK.md § Step 2B for the exact records to recreate at Names.co.uk DNS panel (A × 4, CNAME × 1 for `www`, MX × 2, TXT × 1 SPF). Then change nameservers via Names.co.uk (the registrar) from `ns10.wixdns.net` / `ns11.wixdns.net` to Names.co.uk defaults. After this, Wix has no role and can be cancelled.
+- [ ] **~2026-05-27 — cancel Wix plan, delete Wix site.**
+- [x] ~~Paste real GA4 Measurement ID into `analytics.js` once the property is created.~~ **Done 2026-04-28** — `G-GQQM5JT1SD` set locally; pending GitHub push + Realtime verification.
+- [ ] Verify Search Console + submit `sitemap.xml`. (Walkthrough sent to Chris 2026-04-28: URL prefix property, HTML file verification method, upload to repo root, then submit sitemap. Also recommended setting up Bing Webmaster Tools at the same time.)
+- [ ] Cosmetic only: Chris's Chrome profile has a stale Wix HSTS pin causing redirect loops on https://exceleratelearning.co.uk. Site loads fine in incognito + on other devices. Self-clears once Enforce HTTPS is ticked and a fresh GitHub HSTS header is served, or via `chrome://net-internals/#hsts` Delete domain security policies.
+
+**Why two-step DNS:** Wix is currently the authoritative nameserver (`ns10.wixdns.net` / `ns11.wixdns.net`) for `exceleratelearning.co.uk`, so editing Names.co.uk's DNS panel does nothing. We'll edit DNS directly in Wix this week (fast, low-risk, email untouched), prove the new site works on the domain for a week, then move DNS to Names.co.uk before retiring Wix. Names.co.uk's hosted email (MX → `athena.hosts.co.uk` / `hermes.hosts.co.uk`, SPF TXT → `v=spf1 include:spf.hosts.co.uk ~all`) must be carried across in Step 2B.
 
 **Working with the repo going forward:**
 - The initial push was done from a Linux sandbox using a short-lived PAT. The PAT has been revoked.
@@ -211,7 +220,7 @@ Status:
 - The OneDrive `Website Development` folder can stay as a Claude workspace; changes made there can be copied into the git clone when ready to commit.
 
 ### Analytics stack (recommended)
-- **Google Analytics 4** — full traffic + behaviour data. Free. Snippet goes in `<head>` on every page. Needs Measurement ID (`G-XXXXXXXXXX`).
+- **Google Analytics 4** — full traffic + behaviour data. Free. Loaded via consent-gated `analytics.js` (every page). Measurement ID `G-GQQM5JT1SD` (set 2026-04-28).
 - **Cloudflare Web Analytics** — privacy-first, cookie-free, GDPR-clean. Free. Complementary to GA4.
 - **Google Search Console** — tracks search impressions + queries. Free. Verified via DNS TXT record or HTML file.
 
