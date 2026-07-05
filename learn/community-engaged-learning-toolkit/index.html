@@ -269,4 +269,62 @@
       console.log('[exl-exit] script init. overlay found:', !!overlay, 'API_1484_11 present:', !!window.API_1484_11);
 
       function showOverlay() {
-        console.log('[exl-exit] showOverlay() called
+        console.log('[exl-exit] showOverlay() called, already shown:', shown);
+        if (shown) return;
+        shown = true;
+        if (alreadyRated) {
+          stepRate.style.display = 'none';
+          stepActions.style.display = 'block';
+        }
+        overlay.classList.add('show');
+        console.log('[exl-exit] overlay .show class added, current classes:', overlay.className);
+      }
+
+      function submitRating(value) {
+        console.log('[exl-exit] rating submitted:', value);
+        if (window.supabase && window.SUPABASE_URL) {
+          var client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+          client.from('course_ratings').insert({ course_slug: COURSE_SLUG, rating: value })
+            .then(function (res) { console.log('[exl-exit] rating insert result:', res); })
+            .catch(function (err) { console.error('[exl-exit] rating insert threw:', err); });
+        } else {
+          console.warn('[exl-exit] supabase not available, rating not sent');
+        }
+        localStorage.setItem(STORAGE_KEY, '1');
+        stepRate.style.display = 'none';
+        stepActions.style.display = 'block';
+      }
+
+      starsWrap.querySelectorAll('.rate-star').forEach(function (btn) {
+        btn.addEventListener('click', function () { submitRating(parseInt(btn.dataset.value, 10)); });
+      });
+
+      if (window.API_1484_11 && typeof window.API_1484_11.Terminate === 'function') {
+        var originalTerminate = window.API_1484_11.Terminate.bind(window.API_1484_11);
+        window.API_1484_11.Terminate = function (param) {
+          console.log('[exl-exit] Terminate() intercepted, param:', param);
+          var result = originalTerminate(param);
+          showOverlay();
+          return result;
+        };
+        console.log('[exl-exit] Terminate() override installed successfully');
+      } else {
+        console.warn('[exl-exit] could not install Terminate override — API_1484_11 or .Terminate missing');
+      }
+
+      window.API_1484_11.on('SetValue.cmi.completion_status', function (element, value) {
+        console.log('[exl-exit] SetValue cmi.completion_status =', value);
+        if (value === 'completed') showOverlay();
+      });
+      window.API_1484_11.on('SetValue.cmi.success_status', function (element, value) {
+        console.log('[exl-exit] SetValue cmi.success_status =', value);
+        if (value === 'passed') showOverlay();
+      });
+    } catch (err) {
+      console.error('[exl-exit] script error:', err);
+    }
+  })();
+</script>
+
+</body>
+</html>
