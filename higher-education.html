@@ -406,6 +406,7 @@
       <div class="footer-links">
         <a class="footer-link" style="color:var(--blue);" href="higher-education.html">Higher Education</a>
         <a class="footer-link" href="corporate.html">Corporate and SME</a>
+        <a class="footer-link" href="learn/index.html">Learn</a>
         <a class="footer-link" href="index.html#services">Services</a>
       </div>
     </div>
@@ -472,7 +473,12 @@
         <p>Ultimately, the project demonstrates how thoughtfully designed digital learning can move beyond awareness-raising to drive real change in practice. By combining expert insight, applied learning, and accessible resources within a single, cohesive experience, the toolkit supports academics to embed sustainability meaningfully — not as an add-on, but as an integral part of teaching and learning.</p>
       </div>
       <div class="cs-modal-cta">
-        
+        <a class="btn-primary" href="#contact" onclick="closeCaseStudy()">Talk to us about a similar project</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============================================================ -->
 <!-- CASE STUDY MODAL: NCCPE × Westminster — Community-Engaged Learning Toolkit -->
 <!-- Opens from any .case-read-more button with id 'cs-cel-toolkit' -->
@@ -627,12 +633,6 @@
   </div>
 </div>
 
-<a class="btn-primary" href="#contact" onclick="closeCaseStudy()">Talk to us about a similar project</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
   // Hero avatar — try autoplay with sound; persistent mute + play controls
   (function () {
@@ -744,4 +744,20 @@
       return;
     }
     var io = new IntersectionObserver(function (entries) {
- 
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    targets.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+<!-- Cookie consent banner -->
+<script src="consent.js" defer></script>
+<script src="analytics.js" defer></script>
+
+</body>
+</html>
