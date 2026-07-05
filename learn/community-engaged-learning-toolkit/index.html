@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Community Engaged Learning Toolkit | eXcelerate Learning</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #16162A; --surface: #1E1E38;
+    --pink: #FF00FB; --blue: #02A9EB;
+    --fg1: #FFFFFF; --fg2: #9B9BC4;
+    --border: rgba(255,255,255,0.07);
+  }
+  html, body { height: 100%; background: var(--bg); font-family: 'Open Sans', sans-serif; overflow: hidden; }
+
+  .bar {
+    display: flex; align-items: center; gap: 12px;
+    height: 56px; padding: 0 20px;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+  }
+  .bar img { height: 28px; }
+  .bar .title { color: var(--fg1); font-size: 14px; font-weight: 600; }
+  .bar .tag {
+    margin-left: auto; font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--fg2); border: 1px solid var(--border);
+    border-radius: 999px; padding: 4px 10px;
+  }
+
+  .frame-wrap { position: relative; width: 100%; height: calc(100% - 56px); background: #000; }
+  iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .loading {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: var(--fg2); font-size: 13px; letter-spacing: 0.02em;
+  }
+
+  /* End-of-course rating prompt */
+  .rate-prompt {
+    position: absolute; right: 20px; bottom: 20px; z-index: 10;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 18px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    max-width: 280px; display: none; font-family: 'Open Sans', sans-serif;
+  }
+  .rate-prompt.show { display: block; }
+  .rate-prompt-title { color: var(--fg1); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .rate-stars { display: flex; gap: 4px; margin-bottom: 10px; }
+  .rate-star { font-size: 26px; line-height: 1; color: rgba(255,255,255,0.2); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
+  .rate-star:hover, .rate-star.hover { color: #F7D445; }
+  .rate-dismiss { font-size: 11px; color: var(--fg2); background: none; border: none; cursor: pointer; text-decoration: underline; padding: 0; }
+  .rate-thanks { color: #28BAA9; font-size: 13px; font-weight: 600; }
+
+  /* Temporary test control — remove before this goes fully public */
+  .test-btn {
+    font-size: 11px; font-weight: 700; color: #F7D445; background: rgba(247,212,69,0.1);
+    border: 1px solid rgba(247,212,69,0.3); border-radius: 999px; padding: 5px 12px;
+    cursor: pointer; margin-left: 12px; white-space: nowrap;
+  }
+  .test-btn:hover { background: rgba(247,212,69,0.2); }
+
+  /* Sign-up gate — shown before the course loads, required to proceed */
+  .signup-gate {
+    position: absolute; inset: 0; z-index: 20;
+    background: var(--bg); display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .signup-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 36px 32px; max-width: 380px; width: 100%; text-align: center;
+  }
+  .signup-title { font-family: 'Rowdies', cursive; font-size: 22px; color: var(--fg1); margin-bottom: 8px; }
+  .signup-sub { font-size: 13px; color: var(--fg2); line-height: 1.5; margin-bottom: 22px; }
+  .signup-field { margin-bottom: 12px; text-align: left; }
+  .signup-field label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg2); margin-bottom: 6px; }
+  .signup-field input {
+    width: 100%; padding: 11px 14px; border-radius: 10px; font-size: 14px;
+    background: var(--bg); border: 1px solid var(--border); color: var(--fg1);
+    font-family: 'Open Sans', sans-serif;
+  }
+  .signup-field input:focus { outline: none; border-color: #28BAA9; }
+  .signup-error { color: #FF0063; font-size: 12px; margin-bottom: 10px; min-height: 16px; text-align: left; }
+  .signup-submit {
+    width: 100%; padding: 13px; border-radius: 999px; border: none; cursor: pointer;
+    background: linear-gradient(135deg, #4FE0C9, #1E8F7E); color: #0D0D1A;
+    font-size: 14px; font-weight: 700; font-family: 'Open Sans', sans-serif; margin-top: 4px;
+  }
+  .signup-submit:disabled { opacity: 0.6; cursor: default; }
+  .signup-privacy { font-size: 11px; color: var(--fg2); margin-top: 14px; line-height: 1.4; }
+  .signup-privacy a { color: #5BAAE7; }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <img src="../../assets/eXcelerate_Learning_white_text_logo.png" alt="eXcelerate Learning">
+  <span class="title">Community Engaged Learning Toolkit</span>
+  <button class="test-btn" type="button" id="test-rating-btn">Test: show rating prompt</button>
+  <span class="tag">Preview build</span>
+</div>
+
+<div class="frame-wrap">
+  <div class="loading" id="loading" style="display:none;">Loading course&hellip;</div>
+  <iframe id="course-frame" data-src="course/index_lms.html" allow="autoplay" onload="document.getElementById('loading').style.display='none'"></iframe>
+
+  <!-- Required before the course loads. Name/email go straight to Supabase — -->
+  <!-- nothing is shown on the site itself, this is purely for our own records. -->
+  <div class="signup-gate" id="signup-gate">
+    <div class="signup-card">
+      <div class="signup-title">Before you start</div>
+      <p class="signup-sub">Just your name and email, so we know who's using this course. No password, no account.</p>
+      <form id="signup-form">
+        <div class="signup-field">
+          <label for="signup-name">Name</label>
+          <input type="text" id="signup-name" autocomplete="name" required>
+        </div>
+        <div class="signup-field">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" autocomplete="email" required>
+        </div>
+        <div class="signup-error" id="signup-error"></div>
+        <button class="signup-submit" type="submit" id="signup-submit">Start course</button>
+      </form>
+      <div class="signup-privacy">By continuing you agree to our <a href="../../privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</div>
+    </div>
+  </div>
+
+  <!-- Appears once the course reports completion. Submits straight to Supabase — -->
+  <!-- see learn/index.html for the matching aggregate display on the course card. -->
+  <div class="rate-prompt" id="rate-prompt">
+    <div class="rate-prompt-title" id="rate-prompt-title">How was this course?</div>
+    <div class="rate-stars" id="rate-stars">
+      <button class="rate-star" type="button" data-value="1">★</button>
+      <button class="rate-star" type="button" data-value="2">★</button>
+      <button class="rate-star" type="button" data-value="3">★</button>
+      <button class="rate-star" type="button" data-value="4">★</button>
+      <button class="rate-star" type="button" data-value="5">★</button>
+    </div>
+    <button class="rate-dismiss" type="button" id="rate-dismiss">Maybe later</button>
+  </div>
+</div>
+
+<!-- scorm-again: provides a SCORM 2004 API so the course runs without console errors.
+     Memory-only mode — progress/resume isn't wired up yet, this is just enough of an
+     API for the course to run cleanly and for us to detect completion for the rating
+     prompt below. -->
+<script src="https://cdn.jsdelivr.net/npm/scorm-again@latest/dist/scorm-again.min.js"></script>
+<script>
+  window.API_1484_11 = new Scorm2004API({
+    autocommit: false,
+    logLevel: 4
+  });
+</script>
+
+<script src="../supabase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<!-- Sign-up gate: required before the course iframe loads at all -->
+<script>
+  (function () {
+    var COURSE_SLUG = 'community-engaged-learning-toolkit';
+    var SIGNUP_KEY = 'exl_signedup_' + COURSE_SLUG;
+    var gate = document.getElementById('signup-gate');
+    var form = document.getElementById('signup-form');
+    var nameInput = document.getElementById('signup-name');
+    var emailInput = document.getElementById('signup-email');
+    var errorEl = document.getElementById('signup-error');
+    var submitBtn = document.getElementById('signup-submit');
+    var frame = document.getElementById('course-frame');
+    var loading = document.getElementById('loading');
+
+    function loadCourse() {
+      gate.style.display = 'none';
+      loading.style.display = 'flex';
+      frame.src = frame.dataset.src;
+    }
+
+    if (localStorage.getItem(SIGNUP_KEY)) {
+      loadCourse();
+      return;
+    }
+
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = nameInput.value.trim();
+      var email = emailInput.value.trim();
+
+      if (!name) { errorEl.textContent = 'Please enter your name.'; return; }
+      if (!EMAIL_RE.test(email)) { errorEl.textContent = 'Please enter a valid email address.'; return; }
+      errorEl.textContent = '';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Starting…';
+
+      if (!window.supabase || !window.SUPABASE_URL) {
+        // Supabase failed to load — don't block access to a free course over it,
+        // just proceed without recording the signup.
+        loadCourse();
+        return;
+      }
+
+      var client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+      client.from('course_signups').insert({ course_slug: COURSE_SLUG, name: name, email: email })
+        .then(function () {
+          localStorage.setItem(SIGNUP_KEY, '1');
+          loadCourse();
+        })
+        .catch(function () {
+          loadCourse(); // don't trap someone behind a broken network call
+        });
+    });
+  })();
+</script>
+
+<!-- Rating prompt logic -->
+<script>
+  (function () {
+    var COURSE_SLUG = 'community-engaged-learning-toolkit';
+    var STORAGE_KEY = 'exl_rated_' + COURSE_SLUG;
+
+    var prompt = document.getElementById('rate-prompt');
+    var starsWrap = document.getElementById('rate-stars');
+    var dismissBtn = document.getElementById('rate-dismiss');
+    var titleEl = document.getElementById('rate-prompt-title');
+    var testBtn = document.getElementById('test-rating-btn');
+    var shown = false;
+    var alreadyDone = !!localStorage.getItem(STORAGE_KEY);
+
+    function showPrompt() {
+      if (shown) return;
+      shown = true;
+      prompt.classList.add('show');
+    }
+
+    // Test button always works, even if this browser already rated/dismissed —
+    // remove this button (and this listener) before going fully public.
+    if (testBtn) {
+      testBtn.addEventListener('click', function () {
+        shown = false;
+        titleEl.textContent = 'How was this course?';
+        starsWrap.style.display = 'flex';
+        dismissBtn.style.display = 'inline';
+        var existingThanks = prompt.querySelector('.rate-thanks');
+        if (existingThanks) existingThanks.remove();
+        showPrompt();
+      });
+    }
+
+    if (alreadyDone) return; // don't wire up the real completion auto-trigger again on this browser
+
+    function submitRating(value) {
+      if (!window.supabase || !window.SUPABASE_URL) return;
+      var client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+      client.from('course_ratings').insert({ course_slug: COURSE_SLUG, rating: value }).then(function () {
+        localStorage.setItem(STORAGE_KEY, '1');
+      });
+      starsWrap.style.display = 'none';
+      dismissBtn.style.display = 'none';
+      titleEl.textContent = '';
+      var thanks = document.createElement('div');
+      thanks.className = 'rate-thanks';
+      thanks.textContent = 'Thanks for the feedback!';
+      prompt.appendChild(thanks);
+      setTimeout(function () { prompt.classList.remove('show'); }, 2200);
+    }
+
+    starsWrap.querySelectorAll('.rate-star').forEach(function (btn) {
+      btn.addEventListener('click', function () { submitRating(parseInt(btn.dataset.value, 10)); });
+    });
+    dismissBtn.addEventListener('click', function () {
+      localStorage.setItem(STORAGE_KEY, '1');
+      prompt.classList.remove('show');
+    });
+
+    // Fires when the SCORM content reports completion or a pass — whichever comes first.
+    window.API_1484_11.on('SetValue.cmi.completion_status', function (element, value) {
+      if (value === 'completed') showPrompt();
+    });
+    window.API_1484_11.on('SetValue.cmi.success_status', function (element, value) {
+      if (value === 'passed') showPrompt();
+    });
+  })();
+</script>
+
+</body>
+</html>

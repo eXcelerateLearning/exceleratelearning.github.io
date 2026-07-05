@@ -89,6 +89,7 @@
   <div class="nav-menu">
     <a class="nav-link he active" href="higher-education.html">Higher Education</a>
     <a class="nav-link corp" href="corporate.html">Corporate</a>
+    <a class="nav-link learn" href="learn/index.html">Learn</a>
     <a class="nav-link" href="index.html#services">Services</a>
     <a class="nav-link" href="index.html#our-work">Our Work</a>
     <a class="nav-link" href="about.html">About</a>
@@ -254,7 +255,10 @@
           <span class="case-tool">NCCPE partnership</span>
           <span class="case-tool">University of Westminster</span>
         </div>
-        <button class="case-read-more" type="button" onclick="openCaseStudy('cs-cel-toolkit')">Read more</button>
+        <div class="case-actions">
+          <button class="case-read-more" type="button" onclick="openCaseStudy('cs-cel-toolkit')">Read more</button>
+          <a class="case-cta-ext learn" href="learn/community-engaged-learning-toolkit/index.html" target="_blank" rel="noopener">Try it live →</a>
+        </div>
       </div>
     </div>
 
@@ -503,7 +507,8 @@
         <p>Ultimately, the project shows how thoughtful digital design can strengthen a whole community of practice. By combining expert voices, structured exploration, and practical outputs, the toolkit helps academics move from curiosity to confident delivery, and supports community-engaged learning to thrive across the sector.</p>
       </div>
       <div class="cs-modal-cta">
-        <a class="btn-primary" href="#contact" onclick="closeCaseStudy()">Talk to us about a similar project</a>
+        <a class="btn-primary" href="learn/community-engaged-learning-toolkit/index.html" target="_blank" rel="noopener">Try the toolkit live →</a>
+        <a class="btn-secondary" href="#contact" onclick="closeCaseStudy()">Talk to us about a similar project</a>
       </div>
     </div>
   </div>
@@ -739,20 +744,4 @@
       return;
     }
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    targets.forEach(function (el) { io.observe(el); });
-  })();
-</script>
-
-<!-- Cookie consent banner -->
-<script src="consent.js" defer></script>
-<script src="analytics.js" defer></script>
-
-</body>
-</html>
+ 
