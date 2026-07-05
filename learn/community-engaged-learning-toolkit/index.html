@@ -255,19 +255,18 @@
 <!-- End-of-course overlay logic -->
 <script>
   (function () {
-    var COURSE_SLUG = 'community-engaged-learning-toolkit';
-    var STORAGE_KEY = 'exl_rated_' + COURSE_SLUG;
+    try {
+      var COURSE_SLUG = 'community-engaged-learning-toolkit';
+      var STORAGE_KEY = 'exl_rated_' + COURSE_SLUG;
 
-    var overlay = document.getElementById('exit-overlay');
-    var stepRate = document.getElementById('exit-step-rate');
-    var stepActions = document.getElementById('exit-step-actions');
-    var starsWrap = document.getElementById('exit-stars');
-    var shown = false;
-    var alreadyRated = !!localStorage.getItem(STORAGE_KEY);
+      var overlay = document.getElementById('exit-overlay');
+      var stepRate = document.getElementById('exit-step-rate');
+      var stepActions = document.getElementById('exit-step-actions');
+      var starsWrap = document.getElementById('exit-stars');
+      var shown = false;
+      var alreadyRated = !!localStorage.getItem(STORAGE_KEY);
 
-    function showOverlay() {
-      if (shown) return;
-      shown = true;
-      // If this browser has already rated the course before (e.g. replaying
-      // it), skip straight to the action buttons instead of asking again.
-  
+      console.log('[exl-exit] script init. overlay found:', !!overlay, 'API_1484_11 present:', !!window.API_1484_11);
+
+      function showOverlay() {
+        console.log('[exl-exit] showOverlay() called

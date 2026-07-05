@@ -255,4 +255,54 @@
   function renderRating(el, avg, count) {
     var pct = count > 0 ? Math.max(0, Math.min(100, (avg / 5) * 100)) : 0;
     var label = count > 0
-      ? '<span class="rating-avg">' + avg.toFixed(1) + '</span> <span class="rating-count">(' + count + ' rating' + (
+      ? '<span class="rating-avg">' + avg.toFixed(1) + '</span> <span class="rating-count">(' + count + ' rating' + (count === 1 ? '' : 's') + ')</span>'
+      : '<span class="rating-count">Not yet rated</span>';
+    el.innerHTML =
+      '<span class="stars" aria-hidden="true">' +
+        '<span class="stars-bg">★★★★★</span>' +
+        '<span class="stars-fg" style="width:' + pct + '%">★★★★★</span>' +
+      '</span>' +
+      '<span>' + label + '</span>';
+  }
+
+  (function () {
+    try {
+      var els = document.querySelectorAll('.course-rating[data-course-slug]');
+      console.log('[exl-rating] found', els.length, 'rating element(s) on the page');
+      if (!els.length) return;
+
+      // Render the placeholder immediately so there's no layout flash while the
+      // network request is in flight.
+      els.forEach(function (el) {
+        renderRating(el, parseFloat(el.dataset.ratingAvg || '0'), parseInt(el.dataset.ratingCount || '0', 10));
+      });
+      console.log('[exl-rating] placeholder render complete');
+
+      if (!window.supabase) { console.warn('[exl-rating] window.supabase is not defined — supabase-js failed to load (CDN blocked?)'); return; }
+      if (!window.SUPABASE_URL) { console.warn('[exl-rating] window.SUPABASE_URL is not defined — supabase-config.js failed to load'); return; }
+      var client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+
+      els.forEach(function (el) {
+        var slug = el.dataset.courseSlug;
+        client
+          .from('course_rating_summary')
+          .select('avg_rating, rating_count')
+          .eq('course_slug', slug)
+          .maybeSingle()
+          .then(function (res) {
+            console.log('[exl-rating] fetch result for', slug, res);
+            if (res.error || !res.data) return; // keep the placeholder on any failure
+            renderRating(el, parseFloat(res.data.avg_rating) || 0, parseInt(res.data.rating_count, 10) || 0);
+          })
+          .catch(function (err) {
+            console.error('[exl-rating] fetch threw for', slug, err);
+          });
+      });
+    } catch (err) {
+      console.error('[exl-rating] script error:', err);
+    }
+  })();
+</script>
+
+</body>
+</html>
