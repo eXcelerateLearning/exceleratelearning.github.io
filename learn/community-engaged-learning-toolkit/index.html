@@ -41,49 +41,42 @@
     color: var(--fg2); font-size: 13px; letter-spacing: 0.02em;
   }
 
-  /* End-of-course rating prompt */
-  .rate-prompt {
-    position: absolute; right: 20px; bottom: 20px; z-index: 10;
-    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-    padding: 18px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    max-width: 280px; display: none; font-family: 'Open Sans', sans-serif;
-  }
-  .rate-prompt.show { display: block; }
-  .rate-prompt-title { color: var(--fg1); font-size: 13px; font-weight: 700; margin-bottom: 10px; }
-  .rate-stars { display: flex; gap: 4px; margin-bottom: 10px; }
-  .rate-star { font-size: 26px; line-height: 1; color: rgba(255,255,255,0.2); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
-  .rate-star:hover, .rate-star.hover { color: #F7D445; }
-  .rate-dismiss { font-size: 11px; color: var(--fg2); background: none; border: none; cursor: pointer; text-decoration: underline; padding: 0; }
-  .rate-thanks { color: #28BAA9; font-size: 13px; font-weight: 600; }
-
-  /* End-of-course action bar — replaces reliance on the SCORM package's own       */
-  /* "close this window" message (meaningless here since the course runs in an     */
-  /* iframe, not a popup) with two clear next steps, shown the moment completion   */
-  /* fires — same trigger as the rating prompt below. */
-  .finish-bar {
-    position: absolute; top: 0; left: 0; right: 0; z-index: 15;
-    display: none; align-items: center; justify-content: center; flex-wrap: wrap;
-    gap: 12px 16px; padding: 14px 20px;
-    background: rgba(22,22,42,0.95); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  /* End-of-course overlay — triggered directly off the SCORM API's Terminate()   */
+  /* call (intercepted below), which is what actually fires when the learner      */
+  /* clicks the course's own "Exit course" button. Replaces the SCORM package's   */
+  /* native "close this window" message (meaningless here — it's an iframe, not   */
+  /* a popup) with a mandatory rating, then two clear next-step buttons. Same     */
+  /* blocking-modal pattern as the sign-up gate above. */
+  .exit-overlay {
+    position: absolute; inset: 0; z-index: 25;
+    background: rgba(13,13,26,0.92); backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center; padding: 24px;
     font-family: 'Open Sans', sans-serif;
-    transform: translateY(-100%); transition: transform 0.35s ease;
   }
-  .finish-bar.show { display: flex; transform: translateY(0); }
-  .finish-msg { color: var(--fg1); font-size: 13px; font-weight: 700; }
-  .finish-btn {
-    font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap;
-    border-radius: 999px; padding: 8px 16px; transition: all 0.2s;
+  .exit-overlay.show { display: flex; }
+  .exit-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 36px 32px; max-width: 400px; width: 100%; text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
   }
-  .finish-btn-primary {
+  .exit-title { font-family: 'Rowdies', cursive; font-size: 22px; color: var(--fg1); margin-bottom: 8px; }
+  .exit-sub { font-size: 13px; color: var(--fg2); line-height: 1.5; margin-bottom: 20px; }
+  .exit-stars { display: flex; gap: 8px; justify-content: center; margin-bottom: 4px; }
+  .rate-star { font-size: 32px; line-height: 1; color: rgba(255,255,255,0.2); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
+  .rate-star:hover, .rate-star.hover { color: #F7D445; }
+  .exit-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .exit-btn {
+    font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap;
+    border-radius: 999px; padding: 12px 20px; transition: all 0.2s;
+  }
+  .exit-btn-primary {
     color: #0D0D1A; background: linear-gradient(135deg, #4FE0C9, #1E8F7E);
   }
-  .finish-btn-primary:hover { filter: brightness(1.08); }
-  .finish-btn-secondary {
+  .exit-btn-primary:hover { filter: brightness(1.08); }
+  .exit-btn-secondary {
     color: var(--fg1); background: transparent; border: 1px solid var(--border);
   }
-  .finish-btn-secondary:hover { border-color: rgba(255,255,255,0.3); }
+  .exit-btn-secondary:hover { border-color: rgba(255,255,255,0.3); }
 
   /* Sign-up gate — shown before the course loads, required to proceed */
   .signup-gate {
@@ -128,16 +121,6 @@
   <div class="loading" id="loading" style="display:none;">Loading course&hellip;</div>
   <iframe id="course-frame" data-src="course/index_lms.html" allow="autoplay" onload="document.getElementById('loading').style.display='none'"></iframe>
 
-  <!-- Shown once the course reports completion — gives the learner clear next    -->
-  <!-- steps instead of the SCORM package's own "close this window" message,      -->
-  <!-- which doesn't make sense here since the course runs in an iframe, not a    -->
-  <!-- popup window. -->
-  <div class="finish-bar" id="finish-bar">
-    <span class="finish-msg">🎉 Course complete!</span>
-    <a class="finish-btn finish-btn-primary" href="mailto:hello@exceleratelearning.co.uk?subject=White-label%20enquiry%3A%20Community%20Engaged%20Learning%20Toolkit&body=Hi%20eXcelerate%20Learning%2C%0A%0AWe%27d%20like%20to%20find%20out%20more%20about%20white-labelling%20the%20Community%20Engaged%20Learning%20Toolkit%20course%20for%20our%20organisation.">Enquire about white-labelling this course →</a>
-    <a class="finish-btn finish-btn-secondary" href="../index.html">Back to Learn</a>
-  </div>
-
   <!-- Required before the course loads. Details go straight to Supabase — -->
   <!-- nothing is shown on the site itself, this is purely for our own records. -->
   <div class="signup-gate" id="signup-gate">
@@ -164,18 +147,33 @@
     </div>
   </div>
 
-  <!-- Appears once the course reports completion. Submits straight to Supabase — -->
-  <!-- see learn/index.html for the matching aggregate display on the course card. -->
-  <div class="rate-prompt" id="rate-prompt">
-    <div class="rate-prompt-title" id="rate-prompt-title">How was this course?</div>
-    <div class="rate-stars" id="rate-stars">
-      <button class="rate-star" type="button" data-value="1">★</button>
-      <button class="rate-star" type="button" data-value="2">★</button>
-      <button class="rate-star" type="button" data-value="3">★</button>
-      <button class="rate-star" type="button" data-value="4">★</button>
-      <button class="rate-star" type="button" data-value="5">★</button>
+  <!-- Fires directly off the SCORM API's Terminate() call — see the script      -->
+  <!-- block below — which is what actually runs when the learner clicks the     -->
+  <!-- course's own "Exit course" button. Rating is mandatory before the two      -->
+  <!-- next-step buttons appear. Ratings feed learn/index.html's course-card      -->
+  <!-- aggregate display. -->
+  <div class="exit-overlay" id="exit-overlay">
+    <div class="exit-card">
+      <div id="exit-step-rate">
+        <div class="exit-title">How was this course?</div>
+        <p class="exit-sub">Just tap a star to let us know — it only takes a second.</p>
+        <div class="exit-stars" id="exit-stars">
+          <button class="rate-star" type="button" data-value="1">★</button>
+          <button class="rate-star" type="button" data-value="2">★</button>
+          <button class="rate-star" type="button" data-value="3">★</button>
+          <button class="rate-star" type="button" data-value="4">★</button>
+          <button class="rate-star" type="button" data-value="5">★</button>
+        </div>
+      </div>
+      <div id="exit-step-actions" style="display:none;">
+        <div class="exit-title">Thanks for the feedback!</div>
+        <p class="exit-sub">Where next?</p>
+        <div class="exit-actions">
+          <a class="exit-btn exit-btn-primary" href="mailto:hello@exceleratelearning.co.uk?subject=White-label%20enquiry%3A%20Community%20Engaged%20Learning%20Toolkit&body=Hi%20eXcelerate%20Learning%2C%0A%0AWe%27d%20like%20to%20find%20out%20more%20about%20white-labelling%20the%20Community%20Engaged%20Learning%20Toolkit%20course%20for%20our%20organisation.">Enquire about white-labelling this course →</a>
+          <a class="exit-btn exit-btn-secondary" href="../index.html">Back to Learn</a>
+        </div>
+      </div>
     </div>
-    <button class="rate-dismiss" type="button" id="rate-dismiss">Maybe later</button>
   </div>
 </div>
 
@@ -255,16 +253,21 @@
   })();
 </script>
 
-<!-- Rating prompt logic -->
+<!-- End-of-course overlay logic -->
 <script>
   (function () {
     var COURSE_SLUG = 'community-engaged-learning-toolkit';
     var STORAGE_KEY = 'exl_rated_' + COURSE_SLUG;
 
-    var prompt = document.getElementById('rate-prompt');
-    var starsWrap = document.getElementById('rate-stars');
-    var dismissBtn = document.getElementById('rate-dismiss');
-    var titleEl = document.getElementById('rate-prompt-title');
-    var finishBar = document.getElementById('finish-bar');
+    var overlay = document.getElementById('exit-overlay');
+    var stepRate = document.getElementById('exit-step-rate');
+    var stepActions = document.getElementById('exit-step-actions');
+    var starsWrap = document.getElementById('exit-stars');
     var shown = false;
-    var alr
+    var alreadyRated = !!localStorage.getItem(STORAGE_KEY);
+
+    function showOverlay() {
+      if (shown) return;
+      shown = true;
+      // If this browser has already rated the course before (e.g. replaying
+      // it), skip straight to the a
