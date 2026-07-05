@@ -541,6 +541,56 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
   }
 }
 
+/* Nav collapse — laptop/tablet (≤ 1100px)                */
+/* 7 nav items + logo + CTA no longer fit in one row once  */
+/* "Learn" was added, so switch to hamburger mode earlier  */
+/* than the 640px breakpoint used for the rest of the page. */
+@media (max-width: 1100px) {
+  .nav-toggle {
+    display: flex;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav.open .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: absolute;
+    top: 64px;
+    left: 10%;
+    width: 80%;
+    padding: 12px;
+    background: rgba(22, 22, 42, 0.98);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    z-index: 99;
+  }
+
+  .nav.open .nav-menu .nav-link,
+  .nav.open .nav-menu .nav-cta,
+  .nav.open .nav-menu .nav-li {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .nav.open .nav-menu .nav-spacer {
+    display: none;
+  }
+}
+
 /* Mobile (≤ 640px) */
 @media (max-width: 640px) {
   /* Nav — hamburger mode on mobile */
@@ -1696,43 +1746,4 @@ body.cs-modal-open { overflow: hidden; }
 
 /* External CTA pill on a card (sits next to .case-read-more) */
 .case-cta-ext {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 14px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 13px; font-weight: 700;
-  text-decoration: none;
-  border: 1.5px solid;
-  transition: all 0.2s ease;
-}
-/* Pink (corp) external CTA — Synthesia / LearnWorlds — matches .case-read-more corp pill */
-.case-card .case-cta-ext,
-.impact-card .case-cta-ext {
-  background: rgba(255,0,251,0.10);
-  color: var(--pink);
-  border-color: rgba(255,0,251,0.3);
-}
-.case-card .case-cta-ext:hover,
-.impact-card .case-cta-ext:hover {
-  background: rgba(255,0,251,0.22);
-  border-color: rgba(255,0,251,0.55);
-}
-
-/* Green (learn) external CTA — links through to a live hosted course */
-.case-card .case-cta-ext.learn,
-.impact-card .case-cta-ext.learn {
-  background: rgba(40,186,169,0.10);
-  color: var(--green);
-  border-color: rgba(40,186,169,0.3);
-}
-.case-card .case-cta-ext.learn:hover,
-.impact-card .case-cta-ext.learn:hover {
-  background: rgba(40,186,169,0.22);
-  border-color: rgba(40,186,169,0.55);
-}
-
-/* Two-button row inside a .case-body or .impact-body */
-.case-actions {
-  display: flex;
-  flex-wr
+  display: inline-flex; align-items

@@ -56,13 +56,34 @@
   .rate-dismiss { font-size: 11px; color: var(--fg2); background: none; border: none; cursor: pointer; text-decoration: underline; padding: 0; }
   .rate-thanks { color: #28BAA9; font-size: 13px; font-weight: 600; }
 
-  /* Temporary test control — remove before this goes fully public */
-  .test-btn {
-    font-size: 11px; font-weight: 700; color: #F7D445; background: rgba(247,212,69,0.1);
-    border: 1px solid rgba(247,212,69,0.3); border-radius: 999px; padding: 5px 12px;
-    cursor: pointer; margin-left: 12px; white-space: nowrap;
+  /* End-of-course action bar — replaces reliance on the SCORM package's own       */
+  /* "close this window" message (meaningless here since the course runs in an     */
+  /* iframe, not a popup) with two clear next steps, shown the moment completion   */
+  /* fires — same trigger as the rating prompt below. */
+  .finish-bar {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 15;
+    display: none; align-items: center; justify-content: center; flex-wrap: wrap;
+    gap: 12px 16px; padding: 14px 20px;
+    background: rgba(22,22,42,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    font-family: 'Open Sans', sans-serif;
+    transform: translateY(-100%); transition: transform 0.35s ease;
   }
-  .test-btn:hover { background: rgba(247,212,69,0.2); }
+  .finish-bar.show { display: flex; transform: translateY(0); }
+  .finish-msg { color: var(--fg1); font-size: 13px; font-weight: 700; }
+  .finish-btn {
+    font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap;
+    border-radius: 999px; padding: 8px 16px; transition: all 0.2s;
+  }
+  .finish-btn-primary {
+    color: #0D0D1A; background: linear-gradient(135deg, #4FE0C9, #1E8F7E);
+  }
+  .finish-btn-primary:hover { filter: brightness(1.08); }
+  .finish-btn-secondary {
+    color: var(--fg1); background: transparent; border: 1px solid var(--border);
+  }
+  .finish-btn-secondary:hover { border-color: rgba(255,255,255,0.3); }
 
   /* Sign-up gate — shown before the course loads, required to proceed */
   .signup-gate {
@@ -100,7 +121,6 @@
 <div class="bar">
   <img src="../../assets/eXcelerate_Learning_white_text_logo.png" alt="eXcelerate Learning">
   <span class="title">Community Engaged Learning Toolkit</span>
-  <button class="test-btn" type="button" id="test-rating-btn">Test: show rating prompt</button>
   <span class="tag">Preview build</span>
 </div>
 
@@ -108,12 +128,22 @@
   <div class="loading" id="loading" style="display:none;">Loading course&hellip;</div>
   <iframe id="course-frame" data-src="course/index_lms.html" allow="autoplay" onload="document.getElementById('loading').style.display='none'"></iframe>
 
-  <!-- Required before the course loads. Name/email go straight to Supabase — -->
+  <!-- Shown once the course reports completion — gives the learner clear next    -->
+  <!-- steps instead of the SCORM package's own "close this window" message,      -->
+  <!-- which doesn't make sense here since the course runs in an iframe, not a    -->
+  <!-- popup window. -->
+  <div class="finish-bar" id="finish-bar">
+    <span class="finish-msg">🎉 Course complete!</span>
+    <a class="finish-btn finish-btn-primary" href="mailto:hello@exceleratelearning.co.uk?subject=White-label%20enquiry%3A%20Community%20Engaged%20Learning%20Toolkit&body=Hi%20eXcelerate%20Learning%2C%0A%0AWe%27d%20like%20to%20find%20out%20more%20about%20white-labelling%20the%20Community%20Engaged%20Learning%20Toolkit%20course%20for%20our%20organisation.">Enquire about white-labelling this course →</a>
+    <a class="finish-btn finish-btn-secondary" href="../index.html">Back to Learn</a>
+  </div>
+
+  <!-- Required before the course loads. Details go straight to Supabase — -->
   <!-- nothing is shown on the site itself, this is purely for our own records. -->
   <div class="signup-gate" id="signup-gate">
     <div class="signup-card">
       <div class="signup-title">Before you start</div>
-      <p class="signup-sub">Just your name and email, so we know who's using this course. No password, no account.</p>
+      <p class="signup-sub">Just a few details, so we know who's using this course. No password, no account.</p>
       <form id="signup-form">
         <div class="signup-field">
           <label for="signup-name">Name</label>
@@ -122,6 +152,10 @@
         <div class="signup-field">
           <label for="signup-email">Email</label>
           <input type="email" id="signup-email" autocomplete="email" required>
+        </div>
+        <div class="signup-field">
+          <label for="signup-organisation">Organisation</label>
+          <input type="text" id="signup-organisation" autocomplete="organization" required>
         </div>
         <div class="signup-error" id="signup-error"></div>
         <button class="signup-submit" type="submit" id="signup-submit">Start course</button>
@@ -169,6 +203,7 @@
     var form = document.getElementById('signup-form');
     var nameInput = document.getElementById('signup-name');
     var emailInput = document.getElementById('signup-email');
+    var orgInput = document.getElementById('signup-organisation');
     var errorEl = document.getElementById('signup-error');
     var submitBtn = document.getElementById('signup-submit');
     var frame = document.getElementById('course-frame');
@@ -191,9 +226,11 @@
       e.preventDefault();
       var name = nameInput.value.trim();
       var email = emailInput.value.trim();
+      var organisation = orgInput.value.trim();
 
       if (!name) { errorEl.textContent = 'Please enter your name.'; return; }
       if (!EMAIL_RE.test(email)) { errorEl.textContent = 'Please enter a valid email address.'; return; }
+      if (!organisation) { errorEl.textContent = 'Please enter your organisation.'; return; }
       errorEl.textContent = '';
       submitBtn.disabled = true;
       submitBtn.textContent = 'Starting…';
@@ -206,7 +243,7 @@
       }
 
       var client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-      client.from('course_signups').insert({ course_slug: COURSE_SLUG, name: name, email: email })
+      client.from('course_signups').insert({ course_slug: COURSE_SLUG, name: name, email: email, organisation: organisation })
         .then(function () {
           localStorage.setItem(SIGNUP_KEY, '1');
           loadCourse();
@@ -228,65 +265,6 @@
     var starsWrap = document.getElementById('rate-stars');
     var dismissBtn = document.getElementById('rate-dismiss');
     var titleEl = document.getElementById('rate-prompt-title');
-    var testBtn = document.getElementById('test-rating-btn');
+    var finishBar = document.getElementById('finish-bar');
     var shown = false;
-    var alreadyDone = !!localStorage.getItem(STORAGE_KEY);
-
-    function showPrompt() {
-      if (shown) return;
-      shown = true;
-      prompt.classList.add('show');
-    }
-
-    // Test button always works, even if this browser already rated/dismissed —
-    // remove this button (and this listener) before going fully public.
-    if (testBtn) {
-      testBtn.addEventListener('click', function () {
-        shown = false;
-        titleEl.textContent = 'How was this course?';
-        starsWrap.style.display = 'flex';
-        dismissBtn.style.display = 'inline';
-        var existingThanks = prompt.querySelector('.rate-thanks');
-        if (existingThanks) existingThanks.remove();
-        showPrompt();
-      });
-    }
-
-    if (alreadyDone) return; // don't wire up the real completion auto-trigger again on this browser
-
-    function submitRating(value) {
-      if (!window.supabase || !window.SUPABASE_URL) return;
-      var client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-      client.from('course_ratings').insert({ course_slug: COURSE_SLUG, rating: value }).then(function () {
-        localStorage.setItem(STORAGE_KEY, '1');
-      });
-      starsWrap.style.display = 'none';
-      dismissBtn.style.display = 'none';
-      titleEl.textContent = '';
-      var thanks = document.createElement('div');
-      thanks.className = 'rate-thanks';
-      thanks.textContent = 'Thanks for the feedback!';
-      prompt.appendChild(thanks);
-      setTimeout(function () { prompt.classList.remove('show'); }, 2200);
-    }
-
-    starsWrap.querySelectorAll('.rate-star').forEach(function (btn) {
-      btn.addEventListener('click', function () { submitRating(parseInt(btn.dataset.value, 10)); });
-    });
-    dismissBtn.addEventListener('click', function () {
-      localStorage.setItem(STORAGE_KEY, '1');
-      prompt.classList.remove('show');
-    });
-
-    // Fires when the SCORM content reports completion or a pass — whichever comes first.
-    window.API_1484_11.on('SetValue.cmi.completion_status', function (element, value) {
-      if (value === 'completed') showPrompt();
-    });
-    window.API_1484_11.on('SetValue.cmi.success_status', function (element, value) {
-      if (value === 'passed') showPrompt();
-    });
-  })();
-</script>
-
-</body>
-</html>
+    var alr
