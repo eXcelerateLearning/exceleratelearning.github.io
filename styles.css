@@ -42,12 +42,15 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
 .nav-link.corp:hover { background: rgba(255,0,251,0.15); }
 .nav-link.learn { color: var(--green); background: rgba(40,186,169,0.1); }
 .nav-link.learn:hover { background: rgba(40,186,169,0.18); }
+.nav-link.blog { color: var(--yellow); background: rgba(247,212,69,0.1); }
+.nav-link.blog:hover { background: rgba(247,212,69,0.18); }
 
 /* Active nav link (current page) */
 .nav-link.active { color: var(--fg1); background: rgba(255,255,255,0.08); }
 .nav-link.he.active { color: #fff; background: rgba(2,169,235,0.28); box-shadow: 0 0 16px rgba(2,169,235,0.25); }
 .nav-link.corp.active { color: #fff; background: rgba(255,0,251,0.28); box-shadow: 0 0 16px rgba(255,0,251,0.25); }
 .nav-link.learn.active { color: #fff; background: rgba(40,186,169,0.28); box-shadow: 0 0 16px rgba(40,186,169,0.25); }
+.nav-link.blog.active { color: #fff; background: rgba(247,212,69,0.28); box-shadow: 0 0 16px rgba(247,212,69,0.25); }
 
 .nav-spacer { flex: 1; }
 .nav-li { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; color: #5BAAE7; background: rgba(10,102,194,0.12); border: 1px solid rgba(10,102,194,0.25); cursor: pointer; transition: all 0.2s; text-decoration: none; }
@@ -70,15 +73,19 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
 .hero-glow.blue { width: 500px; height: 500px; background: rgba(2,169,235,0.1); bottom: -50px; left: -100px; }
 .hero-glow.green { width: 600px; height: 600px; background: rgba(40,186,169,0.16); top: -100px; right: -100px; }
 .hero-glow.green2 { width: 500px; height: 500px; background: rgba(40,186,169,0.12); bottom: -50px; left: -100px; }
+.hero-glow.yellow { width: 600px; height: 600px; background: rgba(247,212,69,0.14); top: -100px; right: -100px; }
+.hero-glow.yellow2 { width: 500px; height: 500px; background: rgba(247,212,69,0.1); bottom: -50px; left: -100px; }
 .learn-hero { min-height: 56vh; padding-top: 140px; }
 .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
 .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase; color: var(--pink); margin-bottom: 20px; }
 .eyebrow.blue { color: var(--blue); }
 .eyebrow.green { color: var(--green); }
+.eyebrow.yellow { color: var(--yellow); }
 .hero-h1 { font-family: 'Rowdies', cursive; font-weight: 700; font-size: clamp(44px, 5.5vw, 80px); line-height: 1.05; letter-spacing: -2px; color: var(--fg1); margin-bottom: 24px; }
 .hero-h1 .grad { background: linear-gradient(135deg, #FF00FB, #FF0063); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero-h1 .grad-blue { background: linear-gradient(135deg, #02A9EB, #28BAA9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero-h1 .grad-green { background: linear-gradient(135deg, #4FE0C9, #1E8F7E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-h1 .grad-yellow { background: linear-gradient(135deg, #F7D445, #FF9F1C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .hero-sub { font-size: 18px; color: var(--fg2); line-height: 1.7; max-width: 600px; margin-bottom: 48px; font-weight: 400; }
 
 /* AUDIENCE CARDS */
@@ -114,6 +121,7 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
 .sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 12px; }
 .sec-eyebrow.blue { color: var(--blue); }
 .sec-eyebrow.green { color: var(--green); }
+.sec-eyebrow.yellow { color: var(--yellow); }
 .sec-h2 { font-family: 'Rowdies', cursive; font-size: clamp(32px, 3vw, 48px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px; }
 .sec-sub { font-size: 17px; color: var(--fg2); line-height: 1.7; max-width: 560px; }
 .sec-header { margin-bottom: 56px; }

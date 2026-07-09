@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | eXcelerate Learning</title>
+<meta name="description" content="Thoughts on AI, content and instructional design from Chris Peach, founder of eXcelerate Learning. Real projects, real opinions, written and reworked, not just generated.">
+<link rel="canonical" href="https://exceleratelearning.co.uk/blog/">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="eXcelerate Learning">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://exceleratelearning.co.uk/blog/">
+<meta property="og:title" content="Blog | eXcelerate Learning">
+<meta property="og:description" content="Thoughts on AI, content and instructional design from Chris Peach, founder of eXcelerate Learning. Real projects, real opinions, written and reworked, not just generated.">
+<meta property="og:image" content="https://exceleratelearning.co.uk/assets/eXcelerate_Learning_square.png">
+<meta property="og:image:alt" content="eXcelerate Learning logo">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog | eXcelerate Learning">
+<meta name="twitter:description" content="Thoughts on AI, content and instructional design from Chris Peach, founder of eXcelerate Learning. Real projects, real opinions, written and reworked, not just generated.">
+<meta name="twitter:image" content="https://exceleratelearning.co.uk/assets/eXcelerate_Learning_square.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+
+<!-- Page-specific additions: blog post cards. Kept local to this page rather -->
+<!-- than the shared stylesheet until this section settles, same approach as  -->
+<!-- the /learn/ course-grid. -->
+<style>
+  /* One shared card component — .is-hero is the only thing that changes when a  */
+  /* card is promoted/demoted between the featured row and the grid below, so    */
+  /* the popularity script can move a real DOM node between the two containers   */
+  /* and have it just work, no separate markup to keep in sync.                  */
+  .blog-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+  .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+
+  .blog-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s; text-decoration: none; color: inherit; }
+  .blog-card:hover { transform: translateY(-4px); border-color: rgba(247,212,69,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 32px rgba(247,212,69,0.12); }
+  .blog-thumb { position: relative; aspect-ratio: 16/9; background: linear-gradient(135deg, rgba(247,212,69,0.16), rgba(255,159,28,0.05)); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .blog-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .blog-thumb-mark { font-family: 'Rowdies', cursive; font-size: 15px; color: rgba(247,212,69,0.55); letter-spacing: 1px; }
+  .blog-badge { position: absolute; top: 12px; left: 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg1); background: rgba(22,22,42,0.85); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; backdrop-filter: blur(6px); }
+  .blog-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .blog-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--fg3); text-transform: uppercase; letter-spacing: 0.04em; }
+  .blog-title { font-family: 'Rowdies', cursive; font-size: 19px; font-weight: 400; color: var(--fg1); line-height: 1.3; }
+  .blog-desc { font-size: 14px; color: var(--fg2); line-height: 1.6; flex: 1; }
+  .blog-cta { font-size: 13px; font-weight: 700; color: var(--yellow); margin-top: 4px; }
+  .blog-card:hover .blog-cta { text-decoration: underline; }
+
+  .blog-card.is-hero { border-radius: 24px; }
+  .blog-card.is-hero:hover { box-shadow: 0 24px 48px rgba(0,0,0,0.45), 0 0 40px rgba(247,212,69,0.14); }
+  .blog-card.is-hero .blog-badge { color: #16162A; background: var(--yellow); padding: 6px 14px; }
+  .blog-card.is-hero .blog-body { padding: 28px 30px; gap: 12px; }
+  .blog-card.is-hero .blog-title { font-size: clamp(20px, 2vw, 25px); }
+  .blog-card.is-hero .blog-desc { font-size: 15px; line-height: 1.65; }
+
+  .blog-card-soon { opacity: 0.55; }
+  .blog-thumb-soon { display: flex; align-items: center; justify-content: center; }
+  .blog-soon-icon { font-size: 28px; color: var(--fg3); }
+
+  /* Read-time pill — reused on the post pages too */
+  .read-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--fg2); background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+  /* Rating pill — same treatment, filled in from blog_rating_summary once loaded */
+  .rating-pill { color: var(--yellow); }
+
+  .blog-subhead { font-family: 'Rowdies', cursive; font-size: 15px; font-weight: 400; color: var(--fg3); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 20px; }
+
+  @media (max-width: 860px) {
+    .blog-hero-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ SHARED NAV ═══════════════════════ -->
+<nav class="nav" id="site-nav">
+  <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('site-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-logo" href="../index.html">
+    <img src="../assets/eXcelerate_Learning_white_text_logo.png" alt="eXcelerate Learning" onerror="this.style.display='none'">
+    <span class="nav-logo-text">e<span>X</span>celerate Learning</span>
+  </a>
+
+  <div class="nav-menu">
+    <a class="nav-link he" href="../higher-education.html">Higher Education</a>
+    <a class="nav-link corp" href="../corporate.html">Corporate</a>
+    <a class="nav-link learn" href="../learn/index.html">Learn</a>
+    <a class="nav-link blog active" href="index.html">Blog</a>
+    <a class="nav-link" href="../index.html#services">Services</a>
+    <a class="nav-link" href="../index.html#our-work">Our Work</a>
+    <a class="nav-link" href="../about.html">About</a>
+    <div class="nav-spacer"></div>
+    <a class="nav-li" href="https://www.linkedin.com/company/105195682" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      Follow on LinkedIn
+    </a>
+    <a class="nav-cta" href="../index.html#contact">Get in touch</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ PAGE: BLOG ═══════════════════════ -->
+
+<!-- HERO -->
+<div class="hero learn-hero">
+  <div class="hero-glow yellow"></div>
+  <div class="hero-glow yellow2"></div>
+  <div class="hero-content">
+    <div class="eyebrow yellow">eXcelerate Learning</div>
+    <h1 class="hero-h1">Thinking out loud<br><span class="grad-yellow">about education, learning design and AI.</span></h1>
+    <p class="hero-sub">Real projects, real opinions, written by me (and AI!) re-worked and re-read until it's actually mine. No stock photos of people pointing at whiteboards.</p>
+  </div>
+</div>
+
+<!-- POST GRID -->
+<div class="divider-grad"></div>
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-eyebrow yellow">Latest thinking</div>
+    <h2 class="sec-h2">From the blog</h2>
+    <p class="sec-sub">New posts land here as they're written. No fixed schedule, just whenever there's something worth actually saying.</p>
+  </div>
+
+  <!-- ✏️ EDIT — adding post 3 (or 4, or 5...): drop a plain .blog-card into      -->
+  <!-- #blog-grid below (copy the "More soon" placeholder's shape), give the      -->
+  <!-- <a> a data-post-card attribute and a data-slug matching the post_slug used -->
+  <!-- to log views on that post's own page. Add a read-pill and a               -->
+  <!-- read-pill.rating-pill with data-rating-slug set to the same slug too.     -->
+  <!-- Nothing else to do here — the script at the bottom of this file compares  -->
+  <!-- real view counts on every load and automatically promotes whichever       -->
+  <!-- non-"most recent" post has the most into the second hero slot below,      -->
+  <!-- demoting whatever was there before, and fills in every rating pill it     -->
+  <!-- finds on the page from blog_rating_summary. -->
+  <div class="blog-hero-grid" id="blog-hero-grid">
+
+    <a class="blog-card is-hero" data-post-card data-slug="content-is-king" data-recent="true" href="content-is-king.html">
+      <div class="blog-thumb">
+        <img src="content_is_king_image.png" alt="An ornate gift box wrapped in gold foil, torn open to reveal plain pages underneath" onerror="this.style.display='none'">
+        <span class="blog-badge">Most recent</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span>Chris Peach · AI &amp; content</span>
+          <span class="read-pill">5 min read</span>
+          <span class="read-pill rating-pill" data-rating-slug="content-is-king">Not yet rated</span>
+        </div>
+        <div class="blog-title">Content Is King. Style Isn't.</div>
+        <div class="blog-desc">Content is a funny word when you actually stop and think about it. After fifteen-plus years building courses, here's why the build, the flow and the avatar on screen were never the thing.</div>
+        <div class="blog-cta">Read the post →</div>
+      </div>
+    </a>
+
+    <a class="blog-card is-hero" data-post-card data-slug="ai-in-instructional-design" href="ai-in-instructional-design.html">
+      <div class="blog-thumb">
+        <img src="A_Instructional_design_image.png" alt="A geometric robot hand and a human hand meeting in a handshake" onerror="this.style.display='none'">
+        <span class="blog-badge">Most popular</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span>Chris Peach · AI &amp; instructional design</span>
+          <span class="read-pill">5 min read</span>
+          <span class="read-pill rating-pill" data-rating-slug="ai-in-instructional-design">Not yet rated</span>
+        </div>
+        <div class="blog-title">AI in Instructional Design: What It's Actually Changed for Me</div>
+        <div class="blog-desc">I'm a big Claude user, and I'm not an expert. What AI has genuinely changed about building courses, and what it hasn't touched at all.</div>
+        <div class="blog-cta">Read the post →</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="blog-subhead">More from the blog</div>
+
+  <div class="blog-grid" id="blog-grid">
+
+    <!-- Placeholder card — remove once a third real post is added -->
+    <div class="blog-card blog-card-soon">
+      <div class="blog-thumb blog-thumb-soon">
+        <span class="blog-soon-icon">+</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-title">More soon</div>
+        <div class="blog-desc">Written when there's something worth saying, not on a content calendar.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band" id="contact">
+  <div class="sec-eyebrow yellow" style="margin-bottom:16px;">Work with us</div>
+  <div class="cta-h2">Want to talk through any of this?</div>
+  <p class="cta-sub">Get in touch, no commitment needed, or grab 30 minutes if it's easier to just talk it through.</p>
+  <div class="cta-buttons">
+    <a class="btn-primary" href="mailto:hello@exceleratelearning.co.uk">Email us directly</a>
+    <a class="btn-secondary" href="https://calendly.com/hello-exceleratelearning/30min" target="_blank" rel="noopener">Book a free 30-min call</a>
+    <a class="btn-li" href="https://www.linkedin.com/company/105195682" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      Follow on LinkedIn
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="../assets/eXcelerate_Learning_square.png" alt="eXcelerate Learning" onerror="this.style.display='none'">
+      <div class="footer-wordmark">eXcelerate Learning</div>
+      <div class="footer-tagline">Bespoke solutions, remarkable results.</div>
+      <div style="font-size:12px;color:var(--fg3);"><a href="mailto:hello@exceleratelearning.co.uk" class="footer-link">hello@exceleratelearning.co.uk</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">For you</div>
+      <div class="footer-links">
+        <a class="footer-link" href="../higher-education.html">Higher Education</a>
+        <a class="footer-link" href="../corporate.html">Corporate and SME</a>
+        <a class="footer-link" href="../learn/index.html">Learn</a>
+        <a class="footer-link" href="../index.html#services">Services</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <div class="footer-links">
+        <a class="footer-link" href="index.html">Blog</a>
+        <a class="footer-link" href="../index.html#our-work">Our Work</a>
+        <a class="footer-link" href="../about.html">About Us</a>
+        <a class="footer-link" href="../index.html#contact">Contact</a>
+        <a class="footer-link" href="../privacy-policy.html">Privacy Policy</a>
+        <a class="footer-link" href="../cookie-policy.html">Cookie Policy</a>
+        <a class="footer-link" href="#" onclick="if(window.exlConsent)window.exlConsent.openPrefs();return false;">Cookie settings</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Get in touch</div>
+      <div class="footer-links">
+        <a class="footer-link" style="color:var(--pink);" href="mailto:hello@exceleratelearning.co.uk">hello@exceleratelearning.co.uk</a>
+        <span class="footer-link">The Hangar, Hadley Park East, Telford, TF1 6QJ</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 eXcelerate Learning Ltd</span>
+    <span>Bespoke solutions, remarkable results.</span>
+  </div>
+</div>
+
+<!-- Cookie consent banner -->
+<script src="../consent.js" defer></script>
+<script src="../analytics.js" defer></script>
+
+<!-- Popularity promotion + rating pills — both read from Supabase. Promotion    -->
+<!-- compares real view counts on every load and moves whichever non-"most      -->
+<!-- recent" post has the most logged views into the second hero slot,         -->
+<!-- demoting whatever was sitting there. Requires blog_post_views/            -->
+<!-- blog_view_counts (SQL run 2026-07-08) and blog_post_ratings/              -->
+<!-- blog_rating_summary (SQL run 2026-07-09), plus the tracking/rating        -->
+<!-- scripts on each post page. See the ✏️ EDIT comment above #blog-hero-grid  -->
+<!-- for what a new post needs to be picked up here automatically.             -->
+<script src="../learn/supabase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  (function () {
+    var client = null;
+    try {
+      if (window.supabase && window.SUPABASE_URL) {
+        client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+      } else {
+        console.warn('[exl-blog] supabase not available');
+      }
+    } catch (err) {
+      console.error('[exl-blog] supabase init failed:', err);
+    }
+
+    // Promote whichever non-"most recent" post has the most views into the hero slot
+    (function promotePopular() {
+      try {
+        var heroGrid = document.getElementById('blog-hero-grid');
+        var grid = document.getElementById('blog-grid');
+        if (!heroGrid || !grid || !client) return;
+
+        var recentCard = heroGrid.querySelector('[data-recent="true"]');
+        var currentPopularCard = heroGrid.querySelector('[data-post-card]:not([data-recent="true"])');
+        if (!recentCard || !currentPopularCard) return;
+
+        // Every other real post, wherever it currently lives (hero slot or grid), is a candidate.
+        var candidates = Array.prototype.slice.call(document.querySelectorAll('[data-post-card]'))
+          .filter(function (el) { return el !== recentCard; });
+        if (!candidates.length) return;
+
+        client.from('blog_view_counts').select('post_slug, views').then(function (res) {
+          if (res.error || !res.data) { console.warn('[exl-popular] fetch failed, leaving current popular card in place'); return; }
+
+          var counts = {};
+          res.data.forEach(function (row) { counts[row.post_slug] = row.views; });
+
+          var winner = candidates.reduce(function (best, el) {
+            var views = counts[el.dataset.slug] || 0;
+            var bestViews = counts[best.dataset.slug] || 0;
+            return views > bestViews ? el : best;
+          }, currentPopularCard);
+
+          var winnerViews = counts[winner.dataset.slug] || 0;
+          var currentViews = counts[currentPopularCard.dataset.slug] || 0;
+
+          // No clear winner (tie, or no data yet) — leave things exactly as authored.
+          if (winner === currentPopularCard || winnerViews <= currentViews) return;
+
+          winner.classList.add('is-hero');
+          winner.querySelector('.blog-badge').textContent = 'Most popular';
+          currentPopularCard.classList.remove('is-hero');
+          currentPopularCard.querySelector('.blog-badge').textContent = 'New';
+
+          heroGrid.appendChild(winner);
+          grid.insertBefore(currentPopularCard, grid.firstChild);
+        }).catch(function (err) {
+          console.error('[exl-popular] fetch threw:', err);
+        });
+      } catch (err) {
+        console.error('[exl-popular] error:', err);
+      }
+    })();
+
+    // Fill in every rating pill on the page from blog_rating_summary
+    (function fillRatingPills() {
+      try {
+        var pills = document.querySelectorAll('.rating-pill[data-rating-slug]');
+        if (!pills.length || !client) return;
+
+        client.from('blog_rating_summary').select('post_slug, avg_rating, rating_count').then(function (res) {
+          if (res.error || !res.data) { console.warn('[exl-rating-pills] fetch failed, leaving pills as "Not yet rated"'); return; }
+
+          var summary = {};
+          res.data.forEach(function (row) { summary[row.post_slug] = row; });
+
+          pills.forEach(function (pill) {
+            var row = summary[pill.dataset.ratingSlug];
+            if (!row) return; // no ratings yet — leave the default text
+            pill.textContent = '★ ' + row.avg_rating + ' (' + row.rating_count + ')';
+          });
+        }).catch(function (err) {
+          console.error('[exl-rating-pills] fetch threw:', err);
+        });
+      } catch (err) {
+        console.error('[exl-rating-pills] error:', err);
+      }
+    })();
+  })();
+</script>
+
+</body>
+</html>

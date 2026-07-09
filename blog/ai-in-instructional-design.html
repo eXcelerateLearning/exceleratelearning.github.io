@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI in Instructional Design: What It's Actually Changed for Me | eXcelerate Learning Blog</title>
+<meta name="description" content="I'm a big Claude user, and I'm not an expert. What AI has genuinely changed about building courses after fifteen-plus years in instructional design, and what it hasn't touched at all.">
+<link rel="canonical" href="https://exceleratelearning.co.uk/blog/ai-in-instructional-design.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="eXcelerate Learning">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://exceleratelearning.co.uk/blog/ai-in-instructional-design.html">
+<meta property="og:title" content="AI in Instructional Design: What It's Actually Changed for Me">
+<meta property="og:description" content="I'm a big Claude user, and I'm not an expert. What AI has genuinely changed about building courses after fifteen-plus years in instructional design, and what it hasn't touched at all.">
+<meta property="og:image" content="https://exceleratelearning.co.uk/blog/A_Instructional_design_image.png">
+<meta property="og:image:alt" content="A geometric robot hand and a human hand meeting in a handshake">
+<meta property="article:published_time" content="2026-07-08">
+<meta property="article:author" content="Chris Peach">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI in Instructional Design: What It's Actually Changed for Me">
+<meta name="twitter:description" content="I'm a big Claude user, and I'm not an expert. What AI has genuinely changed about building courses after fifteen-plus years in instructional design, and what it hasn't touched at all.">
+<meta name="twitter:image" content="https://exceleratelearning.co.uk/blog/A_Instructional_design_image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+
+<!-- Structured data: BlogPosting -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI in Instructional Design: What It's Actually Changed for Me",
+  "description": "I'm a big Claude user, and I'm not an expert. What AI has genuinely changed about building courses after fifteen-plus years in instructional design, and what it hasn't touched at all.",
+  "image": "https://exceleratelearning.co.uk/blog/A_Instructional_design_image.png",
+  "url": "https://exceleratelearning.co.uk/blog/ai-in-instructional-design.html",
+  "datePublished": "2026-07-08",
+  "dateModified": "2026-07-08",
+  "author": {
+    "@type": "Person",
+    "name": "Chris Peach",
+    "url": "https://exceleratelearning.co.uk/about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "eXcelerate Learning",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://exceleratelearning.co.uk/assets/eXcelerate_Learning_square.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://exceleratelearning.co.uk/blog/ai-in-instructional-design.html"
+  }
+}
+</script>
+
+<!-- Blog post prose — scoped local styles, same block as content-is-king.html, -->
+<!-- kept local rather than added to the shared stylesheet until this settles.  -->
+<style>
+  .post-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .post-back-row { margin-bottom: 24px; }
+  .post-back-link { font-size: 13px; font-weight: 700; color: var(--yellow); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+  .post-back-link:hover { color: var(--fg1); }
+  .post-title { font-family: 'Rowdies', cursive; font-weight: 700; font-size: clamp(32px, 4.5vw, 52px); line-height: 1.1; letter-spacing: -1px; color: var(--fg1); margin: 0 0 20px; }
+  .post-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; color: var(--fg3); font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 36px; }
+  .read-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--fg2); background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+  .post-cover { width: 100%; aspect-ratio: 16/9; border-radius: 20px; overflow: hidden; margin-bottom: 48px; border: 1px solid var(--border); background: var(--surface); }
+  .post-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .post-body p { color: var(--fg2); font-size: 17px; line-height: 1.8; margin: 0 0 22px; }
+  .post-body h2 { font-family: 'Rowdies', cursive; font-weight: 700; font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -0.5px; line-height: 1.25; color: var(--fg1); margin: 44px 0 18px; }
+  .post-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(247,212,69,0.35); transition: border-color 0.2s, color 0.2s; }
+  .post-body a:hover { color: var(--fg1); border-color: var(--fg1); }
+  .post-body strong { color: var(--fg1); font-weight: 600; }
+  .post-pull { border-left: 2px solid var(--yellow); background: rgba(247,212,69,0.06); padding: 22px 28px; border-radius: 0 12px 12px 0; margin: 40px 0; font-family: 'Rowdies', cursive; font-weight: 400; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.35; color: var(--fg1); }
+  .post-shout { font-weight: 700; letter-spacing: 0.5px; }
+
+  /* Back / rate / next — one row, three equal columns, at the end of the post */
+  .post-nav-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .post-nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 22px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; text-decoration: none; color: inherit; min-height: 100px; }
+  .post-nav-item.is-link { transition: all 0.2s; }
+  .post-nav-item.is-link:hover { border-color: rgba(247,212,69,0.3); transform: translateY(-2px); }
+  .post-nav-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg3); }
+  .post-nav-title { font-family: 'Rowdies', cursive; font-size: 15px; color: var(--fg1); line-height: 1.3; }
+
+  .post-rating-stars { display: flex; gap: 4px; }
+  .rate-star { font-size: 22px; line-height: 1; color: rgba(255,255,255,0.2); background: none; border: none; cursor: pointer; padding: 0; transition: color 0.15s; }
+  .rate-star.filled, .rate-star:hover:not([disabled]) { color: var(--yellow); }
+  .rate-star[disabled] { cursor: default; }
+
+  @media (max-width: 640px) {
+    .post-wrap { padding: 0 20px; }
+    .post-cover { margin-bottom: 32px; border-radius: 16px; }
+    .post-pull { padding: 18px 20px; }
+  }
+
+  @media (max-width: 700px) {
+    .post-nav-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ SHARED NAV ═══════════════════════ -->
+<nav class="nav" id="site-nav">
+  <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('site-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-logo" href="../index.html">
+    <img src="../assets/eXcelerate_Learning_white_text_logo.png" alt="eXcelerate Learning" onerror="this.style.display='none'">
+    <span class="nav-logo-text">e<span>X</span>celerate Learning</span>
+  </a>
+
+  <div class="nav-menu">
+    <a class="nav-link he" href="../higher-education.html">Higher Education</a>
+    <a class="nav-link corp" href="../corporate.html">Corporate</a>
+    <a class="nav-link learn" href="../learn/index.html">Learn</a>
+    <a class="nav-link blog active" href="index.html">Blog</a>
+    <a class="nav-link" href="../index.html#services">Services</a>
+    <a class="nav-link" href="../index.html#our-work">Our Work</a>
+    <a class="nav-link" href="../about.html">About</a>
+    <div class="nav-spacer"></div>
+    <a class="nav-li" href="https://www.linkedin.com/company/105195682" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      Follow on LinkedIn
+    </a>
+    <a class="nav-cta" href="../index.html#contact">Get in touch</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ PAGE: BLOG POST — AI IN INSTRUCTIONAL DESIGN ═══════════════════════ -->
+
+<div class="section" style="padding-top:56px;">
+  <div class="post-wrap">
+
+    <div class="post-back-row">
+      <a class="post-back-link" href="index.html">&larr; Back to blog</a>
+    </div>
+
+    <h1 class="post-title">AI in Instructional Design: What It's Actually Changed for Me</h1>
+    <div class="post-meta"><span>Chris Peach &middot; 8 July 2026 &middot; AI &amp; instructional design</span><span class="read-pill">5 min read</span></div>
+
+    <div class="post-cover">
+      <img src="A_Instructional_design_image.png" alt="A geometric robot hand and a human hand meeting in a handshake, glowing blue and amber against a navy background">
+    </div>
+
+    <div class="post-body">
+
+      <p>I'll say the quiet bit first. I'm a big Claude user. I made the switch over from GPT a while back, and now Cowork, Projects, all the md files I keep, they're basically a system I've built to support the work: writing, design, flow, heavy information analysis, the sheer lifting of it. If you saw my setup you might think I know what I'm doing. Honestly, no. I'm not an expert. It's new, and it's been trial, a lot of error, and more trial.</p>
+
+      <p>So when people ask if AI is going to replace instructional designers, I don't think that's the interesting question. I've been doing this 15+ years, PGCHE-qualified, and I've already lived through a few "this changes everything" moments. Authoring tools changed how we build. LMS platforms changed how we deliver. AI's just the next one. The question worth asking isn't whether it replaces us. It's what it's actually good for, and what it isn't.</p>
+
+      <h2>The bullet points era</h2>
+
+      <p>I remember exactly when this started properly, back in the early ChatGPT days. Clients would send me reams of bullet points, pages of them, thinking I had no idea what an LLM even was. "I've written this course," they'd say, and they had, no judgement, no stigma, they'd just had some help. Then they'd ask me to use my expertise and turn thirty pages of that into an actual course, and what came back read like a dissertation.</p>
+
+      <p>That's the point worth making properly, because it still holds now. <span class="post-shout">One prompt does not work. I'll say it again. ONE PROMPT. DOES NOT WORK.</span> Getting something usable out of AI is a series of iterations, with real parameters, and that's exactly where the heavy lifting still happens, whatever the tool. Back then it was a simple prompt like "write this in prose, don't use bullet points" that turned a dump of bullets into an actual flow. From there you'd shape the sentence structure, the rhythm, make it read like a person wrote it. LLMs have got a lot better since. But the tell-tale signs are still there if you know what you're looking at, and the underlying truth hasn't moved. It's never one prompt and done.</p>
+
+      <h2>Fast and cheap was never the answer</h2>
+
+      <p>Here's a comparison I keep coming back to. If you build a loft extension fast and cheap, it doesn't stand up. Well, it might stand up, but you know what I mean! Cheap and value for money are not the same thing. Cheap cuts corners. Value for money is efficiency, and I believe AI can absolutely create value for money. That's a different conversation. But fast and cheap, on its own, still isn't the answer, whatever's doing the building.</p>
+
+      <p>Same goes for the integrity panic in higher education. Is GenAI an issue for assessment? Sure. But it's no different to calculators, or Google, or the internet before it. It's here to stay. Don't panic about the tool. Use the time it gives you back for the conversations that actually matter, why a student wrote something the way they did, what a People team is really trying to achieve.</p>
+
+      <h2>The stigma is the wrong fight</h2>
+
+      <p>There's a stigma around this that I think is completely backwards, the idea that using AI to help you write something means you cheated. If you're not using AI to help you, you're the one falling behind. Writing with AI is fine. Where it goes wrong is when someone writes with it, hands it to a client as entirely their own, and never rereads it, never reshapes it, never actually makes it theirs.</p>
+
+      <p>For what it's worth, this post is written with AI. I don't see why that needs hiding. The interesting part was never whether AI touched it.</p>
+
+      <div class="post-pull">It's whether I actually reread it, argued with it, and made it mine.</div>
+
+      <h2>Where it actually saves me time</h2>
+
+      <p>I use Storyline a lot. I'm not a coder, and I won't pretend to be, but if you stay within triggers and variables, AI can build you a proper spec for something complicated fast. Say you've got a gamified activity where learners are spending coins, working out every variable, every trigger, and testing it until it behaves used to eat days. Now it's an hour or two. Same with branching scenarios, working out how many branches you actually need and what route they take. That's real time back, not theoretical time back.</p>
+
+      <h2>Where I actually land</h2>
+
+      <p>I'm not worried about AI. I'm worried about the volume of drivel it's letting people put out, unedited, unread, un-thought-about.</p>
+
+      <p>You can spot it a mile off. Pages of identical sentence structure, no rhythm, no flair, nothing that sounds like it passed through an actual person on the way out. Reams of information because it was easy to generate, not because anyone decided it needed to exist. And every time a learner sits through something like that, it costs the whole idea of online learning a bit more trust.</p>
+
+      <p>That's the bit worth losing sleep over. Not the tool. The output nobody bothered to own.</p>
+
+      <p>If you want to talk through where AI genuinely fits in your organisation's learning content, and where it really doesn't, that's a conversation I'm always up for. <a href="mailto:hello@exceleratelearning.co.uk">Email me</a> or <a href="https://calendly.com/hello-exceleratelearning/30min" target="_blank" rel="noopener">grab 30 minutes</a>, or just take a look at what else we're doing at <a href="../index.html">exceleratelearning.co.uk</a>.</p>
+
+    </div>
+
+    <!-- ✏️ EDIT — when post 3 goes live, update the "Next" link/title below,     -->
+    <!-- and update content-is-king.html's next link to point here instead.      -->
+    <div class="post-nav-row">
+      <a class="post-nav-item is-link" href="index.html">
+        <span class="post-nav-label">&larr; Back</span>
+        <span class="post-nav-title">All posts</span>
+      </a>
+
+      <div class="post-nav-item" id="post-rating" data-slug="ai-in-instructional-design">
+        <span class="post-nav-label" id="rating-label">Rate this post</span>
+        <div class="post-rating-stars" id="rating-stars">
+          <button class="rate-star" type="button" data-value="1" aria-label="Rate 1 star">&#9733;</button>
+          <button class="rate-star" type="button" data-value="2" aria-label="Rate 2 stars">&#9733;</button>
+          <button class="rate-star" type="button" data-value="3" aria-label="Rate 3 stars">&#9733;</button>
+          <button class="rate-star" type="button" data-value="4" aria-label="Rate 4 stars">&#9733;</button>
+          <button class="rate-star" type="button" data-value="5" aria-label="Rate 5 stars">&#9733;</button>
+        </div>
+      </div>
+
+      <a class="post-nav-item is-link" href="content-is-king.html">
+        <span class="post-nav-label">Next &rarr;</span>
+        <span class="post-nav-title">Content Is King. Style Isn't.</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band" id="contact">
+  <div class="sec-eyebrow yellow" style="margin-bottom:16px;">Work with us</div>
+  <div class="cta-h2">Want to talk through any of this?</div>
+  <p class="cta-sub">Get in touch, no commitment needed, or grab 30 minutes if it's easier to just talk it through.</p>
+  <div class="cta-buttons">
+    <a class="btn-primary" href="mailto:hello@exceleratelearning.co.uk">Email us directly</a>
+    <a class="btn-secondary" href="https://calendly.com/hello-exceleratelearning/30min" target="_blank" rel="noopener">Book a free 30-min call</a>
+    <a class="btn-li" href="https://www.linkedin.com/company/105195682" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#5BAAE7"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      Follow on LinkedIn
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="../assets/eXcelerate_Learning_square.png" alt="eXcelerate Learning" onerror="this.style.display='none'">
+      <div class="footer-wordmark">eXcelerate Learning</div>
+      <div class="footer-tagline">Bespoke solutions, remarkable results.</div>
+      <div style="font-size:12px;color:var(--fg3);"><a href="mailto:hello@exceleratelearning.co.uk" class="footer-link">hello@exceleratelearning.co.uk</a></div>
+    </div>
+    <div>
+      <div class="footer-col-title">For you</div>
+      <div class="footer-links">
+        <a class="footer-link" href="../higher-education.html">Higher Education</a>
+        <a class="footer-link" href="../corporate.html">Corporate and SME</a>
+        <a class="footer-link" href="../learn/index.html">Learn</a>
+        <a class="footer-link" href="../index.html#services">Services</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <div class="footer-links">
+        <a class="footer-link" href="index.html">Blog</a>
+        <a class="footer-link" href="../index.html#our-work">Our Work</a>
+        <a class="footer-link" href="../about.html">About Us</a>
+        <a class="footer-link" href="../index.html#contact">Contact</a>
+        <a class="footer-link" href="../privacy-policy.html">Privacy Policy</a>
+        <a class="footer-link" href="../cookie-policy.html">Cookie Policy</a>
+        <a class="footer-link" href="#" onclick="if(window.exlConsent)window.exlConsent.openPrefs();return false;">Cookie settings</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Get in touch</div>
+      <div class="footer-links">
+        <a class="footer-link" style="color:var(--pink);" href="mailto:hello@exceleratelearning.co.uk">hello@exceleratelearning.co.uk</a>
+        <span class="footer-link">The Hangar, Hadley Park East, Telford, TF1 6QJ</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 eXcelerate Learning Ltd</span>
+    <span>Bespoke solutions, remarkable results.</span>
+  </div>
+</div>
+
+<!-- Cookie consent banner -->
+<script src="../consent.js" defer></script>
+<script src="../analytics.js" defer></script>
+
+<!-- Blog view tracking + rating widget — Supabase. View logging feeds the        -->
+<!-- "Most popular" flag on the blog index. The rating widget is inline, no      -->
+<!-- popup, optional — needs the blog_post_views/blog_view_counts and            -->
+<!-- blog_post_ratings/blog_rating_summary tables+views set up in Supabase.      -->
+<script src="../learn/supabase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  (function () {
+    var SLUG = 'ai-in-instructional-design';
+    var client = null;
+    try {
+      if (window.supabase && window.SUPABASE_URL) {
+        client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+      } else {
+        console.warn('[exl-blog] supabase not available');
+      }
+    } catch (err) {
+      console.error('[exl-blog] supabase init failed:', err);
+    }
+
+    // View tracking — one logged view per browser per post
+    (function logView() {
+      try {
+        var KEY = 'exl_viewed_' + SLUG;
+        if (localStorage.getItem(KEY) || !client) return;
+        client.from('blog_post_views').insert({ post_slug: SLUG }).then(function (res) {
+          if (res.error) { console.error('[exl-views] insert failed:', res.error); return; }
+          localStorage.setItem(KEY, '1');
+        });
+      } catch (err) {
+        console.error('[exl-views] error logging view:', err);
+      }
+    })();
+
+    // Rating widget — inline star rating, optional, no popup
+    (function rating() {
+      try {
+        var label = document.getElementById('rating-label');
+        var starsWrap = document.getElementById('rating-stars');
+        if (!label || !starsWrap) return;
+        var stars = starsWrap.querySelectorAll('.rate-star');
+        var RATED_KEY = 'exl_rated_' + SLUG;
+        var alreadyRated = localStorage.getItem(RATED_KEY);
+
+        function fillStars(n) {
+          stars.forEach(function (s) {
+            s.classList.toggle('filled', parseInt(s.dataset.value, 10) <= n);
+          });
+        }
+
+        function showAverage() {
+          if (!client) { label.textContent = 'Not yet rated'; return; }
+          client.from('blog_rating_summary').select('avg_rating, rating_count').eq('post_slug', SLUG).maybeSingle()
+            .then(function (res) {
+              if (res.error || !res.data) { label.textContent = 'Not yet rated'; return; }
+              fillStars(Math.round(parseFloat(res.data.avg_rating) || 0));
+              label.textContent = res.data.avg_rating + ' avg (' + res.data.rating_count + ')';
+            });
+        }
+
+        if (alreadyRated) {
+          fillStars(parseInt(alreadyRated, 10));
+          label.textContent = 'You rated this ' + alreadyRated + ' ★ — thanks';
+          stars.forEach(function (s) { s.disabled = true; });
+          return;
+        }
+
+        showAverage();
+
+        stars.forEach(function (s) {
+          s.addEventListener('mouseenter', function () { fillStars(parseInt(s.dataset.value, 10)); });
+          s.addEventListener('mouseleave', function () {
+            var saved = localStorage.getItem(RATED_KEY);
+            fillStars(saved ? parseInt(saved, 10) : 0);
+          });
+          s.addEventListener('click', function () {
+            var value = parseInt(s.dataset.value, 10);
+            if (!client) return;
+            stars.forEach(function (btn) { btn.disabled = true; });
+            client.from('blog_post_ratings').insert({ post_slug: SLUG, rating: value }).then(function (res) {
+              if (res.error) { console.error('[exl-rating] insert failed:', res.error); return; }
+              localStorage.setItem(RATED_KEY, String(value));
+              fillStars(value);
+              label.textContent = 'You rated this ' + value + ' ★ — thanks';
+            });
+          });
+        });
+      } catch (err) {
+        console.error('[exl-rating] error:', err);
+      }
+    })();
+  })();
+</script>
+
+</body>
+</html>
