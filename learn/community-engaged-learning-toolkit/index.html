@@ -168,8 +168,7 @@
         <div class="exit-title">Thanks for the feedback!</div>
         <p class="exit-sub">Where next?</p>
         <div class="exit-actions">
-          <a class="exit-btn exit-btn-primary" href="mailto:hello@exceleratelearning.co.uk?subject=White-label%20enquiry%3A%20Community%20Engaged%20Learning%20Toolkit&body=Hi%20eXcelerate%20Learning%2C%0A%0AWe%27d%20like%20to%20find%20out%20more%20about%20white-labelling%20the%20Community%20Engaged%20Learning%20Toolkit%20course%20for%20our%20organisation.">Enquire about white-labelling this course →</a>
-          <a class="exit-btn exit-btn-secondary" href="../index.html">Back to Learn</a>
+          <a class="exit-btn exit-btn-primary" href="../index.html">Back to Learn</a>
         </div>
       </div>
     </div>
@@ -272,6 +271,8 @@
         console.log('[exl-exit] showOverlay() called, already shown:', shown);
         if (shown) return;
         shown = true;
+        // If this browser has already rated the course before (e.g. replaying
+        // it), skip straight to the action buttons instead of asking again.
         if (alreadyRated) {
           stepRate.style.display = 'none';
           stepActions.style.display = 'block';
